@@ -28,74 +28,95 @@ int	ft_atoi(const char *str)
 	return (s * a);
 }
 
-node	*creat(int value)
+node	*add_node(node *last_node, int value)
 {
 	node	*new_node;
 
 	new_node = malloc(sizeof(node));
 	if(new_node == NULL)
 		return(NULL);
-	new_node->index = 1;
-	new_node->value = value;
-	new_node->next = NULL;
-	return (new_node);
-}
-
-node	*add(node *last_node, int value)
-{
-	node	*new_node;
-
-	new_node = malloc(sizeof(node));
-	if(new_node == NULL)
-		return(NULL);
-	new_node->index = last_node->index + 1;
 	new_node->value = value;
 	new_node->next = last_node;
 	return (new_node);
 }
 
-void	printl(node *l)
+list	*init_list(node *n, int arg)
+{
+	int	i;
+	list	*new_list;
+	node	*n2;
+
+	new_list = malloc(sizeof(list));
+	if(new_list == NULL)
+	return(NULL);
+	i = 0;
+	n2 = n;
+	while (n2->next != NULL)
+	{
+		i++;
+		if(i == 1)
+			new_list->node_1 = n2;
+		if(i == 2)
+			new_list->node_2 = n2;
+		if(i == arg -2)
+			new_list->node_m = n2;
+		if(i == arg -2)
+			new_list->node_n = n2->next; //a revoir
+		n2 = n2->next;
+	}
+	return(new_list);
+}
+
+void	printn(node *l)
 {
 	node *l2;
 
 	l2 = l;
 	while(l2 != NULL)
 	{
-		printf("index : %d     ", l2->index);
 		printf("value : %d     ", l2->value);
 		printf("next : %p\n", l2->next);
 		l2 = l2->next;
 	}
 }
 
-void	printlv(node *l)
-{
-	node *l2;
 
-	l2 = l;
-	while(l2 != NULL)
+void	printl_e(list *l1, list *l2)
+{
+	printf("1:%d  2:%d  m:%d  n:%d\n", (l1->node_1)->value, (l1->node_2)->value,
+	(l1->node_m)->value, (l1->node_n)->value);
+	printf("1:%d  2:%d  m:%d  n:%d\n\n", (l2->node_1)->value, (l2->node_2)->value,
+	(l2->node_m)->value, (l2->node_n)->value);
+}
+
+void	printl_a(list *l1, list *l2)
+{
+	node	*l10;
+	node	*l20;
+
+	l10 = l1->node_1; // a revoir
+	l20 = l2->node_1; // a revoir
+	while(l10 != NULL)
 	{
-		printf("%d ", l2->value);
-		l2 = l2->next;
+		printf("%d ", l10->value);
+		l10 = l10->next;
 	}
 	printf("\n");
+		while(l20 != NULL)
+	{
+		printf("%d ", l20->value);
+		l20 = l20->next;
+	}
+	printf("\n\n");
 }
 
-void	printn(node *l)
+void	swap(list *l)
 {
-	printf("%d ", l->value);
-}
+	int	tvalue;
 
-void	swap(node *n)
-{
-	node	*n_next;
-	int		tvalue;
-
-	n_next = n->next;
-	tvalue = n->value;
-
-	n->value = n_next->value;
-	n_next->value = tvalue;
+	tvalue = l->node_1->value;
+	l->node_1->value = l->node_2->value;
+	l->node_2->value = tvalue;
 }
 
 void	push(node *a, node *b)
@@ -121,51 +142,33 @@ void	push(node *a, node *b)
 int	main(int argc, char *argv[])
 {
 	int		i;
-	node	*stack_a;
-	node	*stack_b;
+	list	*list_a;
+	list	*list_b;
+	node	*node_a;
+	node	*node_b;
 
-	stack_a = creat(ft_atoi(argv[argc - 1]));
-	stack_b = creat(0);
+	node_a = add_node(NULL,ft_atoi(argv[argc - 1]));
+	node_b = add_node(NULL,0);
 	i = argc -2;;
 	while (i > 0)
 	{
-		stack_a = add(stack_a, ft_atoi(argv[i]));
-		stack_b = add(stack_b, 0);
+		node_a = add_node(node_a, ft_atoi(argv[i]));
+		node_b = add_node(node_b, 0);
 		i--;
 	}
-	printlv(stack_a);
-	printlv(stack_b);
-	printf("\n");
+	list_a = init_list(node_a, argc);
+	list_b = init_list(node_b, argc);
 
-//	swap(stack_a);
-	printlv(stack_a);
-	printlv(stack_b);
-	printf("\n");
+	printl_a(list_a, list_b);
+	printl_e(list_a, list_b);
 
-	push(stack_a, stack_b);
-	printlv(stack_a);
-	printlv(stack_b);
-	printf("\n");
+	swap(list_a);
+	printl_a(list_a, list_b);
+/*
+	push(node_a, node_b);
 
-	push(stack_a, stack_b);
-	printlv(stack_a);
-	printlv(stack_b);
-	printf("\n");
+	push(node_a, node_b);
 
-	push(stack_a, stack_b);
-	printlv(stack_a);
-	printlv(stack_b);
-	printf("\n");
-
-	push(stack_b, stack_a);
-	printlv(stack_a);
-	printlv(stack_b);
-	printf("\n");
-
-	push(stack_b, stack_a);
-	printlv(stack_a);
-	printlv(stack_b);
-	printf("\n");
-
+*/
 	return(0);
 }
