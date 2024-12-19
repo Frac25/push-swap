@@ -10,8 +10,8 @@ typedef struct nod
 
 typedef struct lis
 {
-	node	*node_1;
-	node	*node_2;
+	node	*node_a;
+	node	*node_b;
 	int		dim;
 } list;
 
@@ -23,4 +23,4 @@ void	printl_e(list *l1, list *l2);
 void	printl_e1(list *l1);
 void	printl_a1(list *l1);
 void	printl_a2(list *l1, list *l2);
-void	printn(list *l);
+void	printa(list *l);

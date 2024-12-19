@@ -26,26 +26,47 @@ list	*init_list(node *n, int arg)
 	if(new_list == NULL)
 	return(NULL);
 
-	new_list->node_1 = n;
-	new_list->node_2 = n->next;
+	new_list->node_a = n;
+	new_list->node_b = NULL;
+	new_list->dim = arg;
+
 	return(new_list);
 }
 
 
-void	printn(list *l)
+void	printa(list *l)
 {
-	node *n2;
+	node *na;
+	node *nb;
 	int	i;
 
 	i = 0;
-	n2 = l->node_1;
-	while(i <= 10)
+	if(na != NULL)
+		na = l->node_a;
+	if(nb != NULL)
+		nb = l->node_b;
+	while(i <= l->dim + 1)
 	{
-		printf("prev : %d     ", (n2->prev)->value);
-		printf("value : %d     ", n2->value);
-		printf("next : %d\n", (n2->next)->value);
-		n2 = n2->next;
+		if(na != NULL)
+		{
+			printf("p : %d     ", (na->prev)->value);
+			printf("v : %d     ", na->value);
+			printf("n : %d               ", (na->next)->value);
+		}
+		if(nb != NULL)
+		{
+			printf("p : %d     ", (nb->prev)->value);
+			printf("v : %d     ", nb->value);
+			printf("n : %d\n", (nb->next)->value);
+		}
+		else
+			printf("\n");
+		if(na != NULL)
+			na = na->next;
+		if(nb != NULL)
+			nb = nb->next;
 		i++;
 	}
+
 	printf("\n");
 }

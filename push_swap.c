@@ -5,28 +5,74 @@
 
 void	swap(list *l)
 {
-	l->node_2->next->prev = l->node_1;
-	l->node_1->prev->next = l->node_2;
-	l->node_2->prev = l->node_1->prev;
-	l->node_1->next = l->node_2->next;
-	l->node_1->prev = l->node_2;
-	l->node_2->next = l->node_1;
+	int	value_tmp;
 
-	l->node_1 = l->node_2;
-	l->node_2 = l->node_2->next;
+	value_tmp = l->node_a->value;
+	l->node_a->value = l->node_a->next->value;
+	l->node_a->next->value = value_tmp;
 }
 
 void	rotate(list *l)
 {
-	l->node_1 = l->node_2;
-	l->node_2 = l->node_1->next;
+	l->node_a = l->node_a->next;
 }
 
 void	rrotate(list *l)
 {
-	l->node_1 = l->node_1->prev;
-	l->node_2 = l->node_2->prev;
+	l->node_a = l->node_a->prev;
 }
+
+void	push_ab(list *l)
+{
+	node *b1;
+	node *an1;
+
+	if (l->node_b == NULL)
+	{
+		an1 = l->node_a->next;
+		l->node_a->next->prev = l->node_a->prev;
+		l->node_a->prev->next = l->node_a->next;
+
+		l->node_b = l->node_a;
+		l->node_b->next = l->node_a;
+		l->node_b->prev = l->node_a;
+
+		l->node_a = an1;
+
+
+printf("cas1\n");
+	}
+	else if (l->node_a->next == l->node_a)
+	{
+		b1 = l->node_b;
+		l->node_b = l->node_a;
+		l->node_b->next = b1;
+		l->node_b->prev = b1->prev;
+		l->node_b->next->prev = l->node_b;
+		l->node_b->prev->next = l->node_b;
+
+		l->node_a = NULL;
+printf("cas2\n");
+	}
+	else
+	{
+		an1 = l->node_a->next;
+		l->node_a->next->prev = l->node_a->prev;
+		l->node_a->prev->next = l->node_a->next;
+
+		b1 = l->node_b;
+		l->node_b = l->node_a;
+		l->node_b->next = b1;
+		l->node_b->prev = b1->prev;
+		l->node_b->next->prev = l->node_b;
+		l->node_b->prev->next = l->node_b;
+
+		l->node_a = an1;
+printf("cas3\n");
+	}
+}
+
+
 
 int	main(int argc, char *argv[])
 {
@@ -48,36 +94,29 @@ int	main(int argc, char *argv[])
 
 	stack_a = init_list(node_a, argc);
 
-	printn(stack_a);
+	printa(stack_a);
 
 	swap(stack_a);
-	printn(stack_a);
+	printa(stack_a);
 
 	rotate(stack_a);
-	printn(stack_a);
+	printa(stack_a);
 
 	rotate(stack_a);
-	printn(stack_a);
+	printa(stack_a);
 
 	rrotate(stack_a);
-	printn(stack_a);
+	printa(stack_a);
 
 	rrotate(stack_a);
-	printn(stack_a);
+	printa(stack_a);
+
+	push_ab(stack_a);
+	printa(stack_a);
+
+	push_ab(stack_a);
+	printa(stack_a);
 
 	return(0);
 }
 
-
-/*
-void	push(list *a, list *b)
-{
-	a->node_1->next = b->node_1;
-	b->node_2 = b->node_1;
-	b->node_1 = a->node_1;
-
-	a->node_1 = a->node_2;
-	a->node_2 = a->node_1->next;
-}
-
-*/
