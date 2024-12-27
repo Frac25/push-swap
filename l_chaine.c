@@ -28,7 +28,7 @@ list	*init_list(node *n, int arg)
 
 	new_list->node_a = n;
 	new_list->node_b = NULL;
-	new_list->dim = arg;
+	new_list->dim_a = arg;
 
 	return(new_list);
 }
@@ -36,16 +36,19 @@ list	*init_list(node *n, int arg)
 
 void	printa(list *l)
 {
-	node *na;
-	node *nb;
+	node *na = NULL;
+	node *nb = NULL;
 	int	i;
 
 	i = 0;
-	if(na != NULL)
+	if(l->node_a != NULL)
 		na = l->node_a;
-	if(nb != NULL)
+//		printf("na non nulll : %p\n", na);}
+
+	if(l->node_b != NULL)
 		nb = l->node_b;
-	while(i <= l->dim + 1)
+//		printf("nb non nulll : %p\n", nb);}
+	while(i <= 10)
 	{
 		if(na != NULL)
 		{
