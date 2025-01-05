@@ -158,7 +158,7 @@ int	test2(list *l)
 	return (n);
 }
 
-void	sort3(list *l, tab *table)
+void	sort_3(list *l, tab *table)
 {
 	int	a;
 	int b;
@@ -171,7 +171,7 @@ void	sort3(list *l, tab *table)
 	}
 	if (table->size == 2)
 	{
-		b = table->location->next;
+		b = table->location->next->value;
 		if (b > a)
 			sb(l);
 		pb(l);
@@ -179,7 +179,7 @@ void	sort3(list *l, tab *table)
 	}
 	else
 	{
-		c = table->location->next->next;
+		c = table->location->next->next->value;
 		if (b > a)
 			sb(l);
 		if (c > b)
@@ -194,15 +194,15 @@ void	sort3(list *l, tab *table)
 
 node	*find_p(list *l, tab *table)
 {
-	return (table->location->value);
+	return (table->location);
 }
 
 int	rec_sort(list *l, tab *table)
 {
 	int		n;
 	node	*pivot;
-	tab		tp;
-	tab		tm;
+	tab		*tp;
+	tab		*tm;
 
 	n = 0;
 	tp->size = 0;
@@ -210,13 +210,13 @@ int	rec_sort(list *l, tab *table)
 
  	//resolution simple
 	if (table->size <= 3)
-		sort_3(l);
+		sort_3(l, table);
 	//separation au pivot
 	else
 	{
-		pivot = find_p(*l, *table);
+		pivot = find_p(l, table);
 		//tri par rapport au pivot
-		if (table->stack == "a"){
+		if (table->stack == 0){
 		while (n < table->size)
 		{
 			if (pivot->value <= l->node_a->value)
@@ -234,8 +234,8 @@ int	rec_sort(list *l, tab *table)
 			}
 		}
 		tp->location = l->node_b;
-		tp->stack = "b";
-		tm->stack = "b";
+		tp->stack = 1;
+		tm->stack = 1;
 		}
 		else{
 		while (n < table->size)
@@ -255,8 +255,8 @@ int	rec_sort(list *l, tab *table)
 			}
 		}
 		tp->location = l->node_b;
-		tp->stack = "a";
-		tm->stack = "a";
+		tp->stack = 0;
+		tm->stack = 0;
 		}
 
 		rec_sort(l, tp);

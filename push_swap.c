@@ -23,13 +23,13 @@ int	main(int argc, char *argv[])
 //	test_i(l);
 //	i = bulle_t(l);
 
-//	i = test2(l);
+	i = test2(l);
 
-	tab	table;
-	table->location = l->node_a;
-	table->location = argc;
-	table->stack = "a";
-	i = rec_sort(l, table);
+//	tab	*table;
+//	table->location = l->node_a;
+//	table->size = argc;
+//	table->stack = 0;
+//	i = rec_sort(l, table);
 
 
 	printa(l);

@@ -25,7 +25,7 @@ typedef struct ta
 {
 	node	*location;
 	int		size;
-	char	stack;
+	int		stack;
 } tab;
 
 
