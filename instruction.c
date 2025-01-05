@@ -2,75 +2,97 @@
 
 void	sa(list *l)
 {
-	int	value_tmp;
+	node	*node_tmp;
 
-	value_tmp = l->node_a->value;
-	l->node_a->value = l->node_a->next->value;
-	l->node_a->next->value = value_tmp;
-	printf("sa\n");
+	node_tmp = l->node_a->next;
+	l->node_a->prev->next = l->node_a->next;
+	l->node_a->next->prev = l->node_a->prev;
+	l->node_a->next->next->prev = l->node_a;
+	l->node_a->next = l->node_a->next->next;
+	l->node_a->next->next = l->node_a;
+	l->node_a->prev = node_tmp;
+	l->node_a = node_tmp;
+
+//	printf("sa\n");
 }
 
 void	sb(list *l)
 {
-	int	value_tmp;
+	node	*node_tmp;
 
-	value_tmp = l->node_b->value;
-	l->node_b->value = l->node_b->next->value;
-	l->node_b->next->value = value_tmp;
-	printf("sb\n");
+	node_tmp = l->node_b->next;
+	l->node_b->prev->next = l->node_b->next;
+	l->node_b->next->prev = l->node_b->prev;
+	l->node_b->next->next->prev = l->node_b;
+	l->node_b->next = l->node_b->next->next;
+	l->node_b->next->next = l->node_b;
+	l->node_b->prev = node_tmp;
+	l->node_b = node_tmp;
+
+	//	printf("sb\n");
 }
 
 void	ss(list *l)
 {
-	int	value_tmp;
+	node	*node_tmp;
 
-	value_tmp = l->node_a->value;
-	l->node_a->value = l->node_a->next->value;
-	l->node_a->next->value = value_tmp;
+	node_tmp = l->node_a->next;
+	l->node_a->prev->next = l->node_a->next;
+	l->node_a->next->prev = l->node_a->prev;
+	l->node_a->next->next->prev = l->node_a;
+	l->node_a->next = l->node_a->next->next;
+	l->node_a->next->next = l->node_a;
+	l->node_a->prev = node_tmp;
+	l->node_a = node_tmp;
 
-	value_tmp = l->node_b->value;
-	l->node_b->value = l->node_b->next->value;
-	l->node_b->next->value = value_tmp;
+	node_tmp = l->node_b->next;
+	l->node_b->prev->next = l->node_b->next;
+	l->node_b->next->prev = l->node_b->prev;
+	l->node_b->next->next->prev = l->node_b;
+	l->node_b->next = l->node_b->next->next;
+	l->node_b->next->next = l->node_b;
+	l->node_b->prev = node_tmp;
+	l->node_b = node_tmp;
 
-	printf("ss\n");
+//	printf("ss\n");
 }
 
 void	ra(list *l)
 {
 	l->node_a = l->node_a->next;
-	printf("ra\n");
+//	printf("ra\n");
 }
 
 void	rb(list *l)
 {
 	l->node_b = l->node_b->next;
-	printf("rb\n");
+//	printf("rb\n");
 }
 
 void	rr(list *l)
 {
 	l->node_a = l->node_a->next;
 	l->node_b = l->node_b->next;
-	printf("rr\n");
+//	printf("rr\n");
 }
 
 void	rra(list *l)
 {
 	l->node_a = l->node_a->prev;
-	printf("rra\n");
+//	printf("rra\n");
 }
 
 void	rrb(list *l)
 {
 	l->node_b = l->node_b->prev;
-	printf("rrb\n");
+//	printf("rrb\n");
 }
 
 void	rrr(list *l)
 {
 	l->node_a = l->node_a->prev;
 	l->node_b = l->node_b->prev;
-	printf("rrr\n");
+//	printf("rrr\n");
 }
 
 void	pa(list *l)
@@ -78,14 +100,14 @@ void	pa(list *l)
 	node *a1;
 	node *bn1;
 
-	printf("pa\n");
+//	printf("pa\n");
 	if (l->node_b == NULL)
 	{
-		printf("cas0 pile b nulle\n");
+//		printf("cas0 pile b nulle\n");
 	}
 	else if (l->node_a == NULL)
 	{
-		printf("cas1 : pile a nulle\n");
+//		printf("cas1 : pile a nulle\n");
 		bn1 = l->node_b->next;
 		l->node_b->next->prev = l->node_b->prev;
 		l->node_b->prev->next = l->node_b->next;
@@ -97,7 +119,7 @@ void	pa(list *l)
 	}
 	else if (l->node_b->next == l->node_b)
 	{
-		printf("cas2 pile b va etre null\n");
+//		printf("cas2 pile b va etre null\n");
 		a1 = l->node_a;
 		l->node_a = l->node_b;
 		l->node_a->next = a1;
@@ -109,7 +131,7 @@ void	pa(list *l)
 	}
 	else
 	{
-		printf("cas3 :  a et b non nul\n");
+//		printf("cas3 :  a et b non nul\n");
 		bn1 = l->node_b->next;
 		l->node_b->next->prev = l->node_b->prev;
 		l->node_b->prev->next = l->node_b->next;
@@ -130,14 +152,14 @@ void	pb(list *l)
 	node *b1;
 	node *an1;
 
-	printf("pb\n");
+//	printf("pb\n");
 	if (l->node_a == NULL)
 	{
-		printf("cas0 pile a nulle\n");
+//		printf("cas0 pile a nulle\n");
 	}
 	else if (l->node_b == NULL)
 	{
-		printf("cas1 : pile b nulle\n");
+//		printf("cas1 : pile b nulle\n");
 		an1 = l->node_a->next;
 		l->node_a->next->prev = l->node_a->prev;
 		l->node_a->prev->next = l->node_a->next;
@@ -149,7 +171,7 @@ void	pb(list *l)
 	}
 	else if (l->node_a->next == l->node_a)
 	{
-		printf("cas2 pile a va etre null\n");
+//		printf("cas2 pile a va etre null\n");
 		b1 = l->node_b;
 		l->node_b = l->node_a;
 		l->node_b->next = b1;
@@ -161,7 +183,7 @@ void	pb(list *l)
 	}
 	else
 	{
-		printf("cas3 :  a et b non nul\n");
+//		printf("cas3 :  a et b non nul\n");
 		an1 = l->node_a->next;
 		l->node_a->next->prev = l->node_a->prev;
 		l->node_a->prev->next = l->node_a->next;

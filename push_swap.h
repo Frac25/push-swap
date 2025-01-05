@@ -21,17 +21,21 @@ typedef struct lis
 	int		dim_b;
 } list;
 
+typedef struct ta
+{
+	node	*location;
+	int		size;
+	char	stack;
+} tab;
+
 
 int	ft_atoi(const char *str);
 
 node	*add_node(node *first_node, int value);
 list	*init_list(node *n, int arg);
 
-void	printl_e(list *l1, list *l2);
-void	printl_e1(list *l1);
-void	printl_a1(list *l1);
-void	printl_a2(list *l1, list *l2);
 void	printa(list *l);
+void	tester(list *l);
 
 void	sa(list *l);
 void	sb(list *l);
@@ -46,3 +50,6 @@ void	rrb(list *l);
 void	rrr(list *l);
 
 int	test_i(list *stack);
+int	bulle_t(list *l);
+int	test2(list *l);
+int	rec_sort(list *l, tab *table);

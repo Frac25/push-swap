@@ -20,19 +20,23 @@ int	main(int argc, char *argv[])
 
 	l = init_list(node_a, argc);
 
-	//test_i(l));
+//	test_i(l);
+//	i = bulle_t(l);
+
+//	i = test2(l);
+
+	tab	table;
+	table->location = l->node_a;
+	table->location = argc;
+	table->stack = "a";
+	i = rec_sort(l, table);
+
 
 	printa(l);
 
-	int n = 0;
-	while(n<100)
-	{
-		if(l->node_a->value > l->node_a->next->value)
-			sa(l);
-		ra(l);
-		n++;
-	}
-	printa(l);
+//	tester(l);
+
+	printf("\ni = %d\n", i);
 
 	return(0);
 }

@@ -14,6 +14,10 @@ node	*add_node(node *n, int value)
 	new_node->next = n;
 	new_node->prev = NULL;
 	if(n != NULL)
+	new_node->index = n->index + 1;
+	else
+	new_node->index = 0;
+	if(n != NULL)
 		n->prev = new_node;
 	return (new_node);
 }
@@ -43,21 +47,20 @@ void	printa(list *l)
 	i = 0;
 	if(l->node_a != NULL)
 		na = l->node_a;
-//		printf("na non nulll : %p\n", na);}
-
 	if(l->node_b != NULL)
 		nb = l->node_b;
-//		printf("nb non nulll : %p\n", nb);}
-	while(i <= 10)
+	while(i <= l->dim_a)
 	{
 		if(na != NULL)
 		{
+			printf("i : %d     ", na->index);
 			printf("p : %d     ", (na->prev)->value);
 			printf("v : %d     ", na->value);
 			printf("n : %d               ", (na->next)->value);
 		}
 		if(nb != NULL)
 		{
+			printf("i : %d     ", nb->index);
 			printf("p : %d     ", (nb->prev)->value);
 			printf("v : %d     ", nb->value);
 			printf("n : %d\n", (nb->next)->value);
@@ -72,4 +75,20 @@ void	printa(list *l)
 	}
 
 	printf("\n");
+}
+
+void	tester(list *l)
+{
+	node	*nt;
+	int		i;
+		nt = l->node_a;
+	i = 0;
+	while(nt != l->node_a->prev)
+	{
+		if(nt->value < nt->next->value)
+			i++;
+		else
+			printf("tester KO a , i = %d\n", i);
+		nt = nt->next;
+	}
 }
