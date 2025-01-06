@@ -53,14 +53,14 @@ void	printa(list *l)
 	{
 		if(na != NULL)
 		{
-			printf("i : %d     ", na->index);
+			printf("ai : %d     ", na->index);
 			printf("p : %d     ", (na->prev)->value);
 			printf("v : %d     ", na->value);
 			printf("n : %d               ", (na->next)->value);
 		}
 		if(nb != NULL)
 		{
-			printf("i : %d     ", nb->index);
+			printf("bi : %d     ", nb->index);
 			printf("p : %d     ", (nb->prev)->value);
 			printf("v : %d     ", nb->value);
 			printf("n : %d\n", (nb->next)->value);

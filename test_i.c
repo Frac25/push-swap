@@ -7,6 +7,9 @@ int	test_i(list *stack)
 	sa(stack);
 	printa(stack);
 
+	sa(stack);
+	printa(stack);
+
 	ra(stack);
 	printa(stack);
 
@@ -94,10 +97,10 @@ int	test_i(list *stack)
 	rr(stack);
 	printa(stack);
 
-	rr(stack);
+	rra(stack);
 	printa(stack);
 
-	rr(stack);
+	rrb(stack);
 	printa(stack);
 
 	rrr(stack);
@@ -158,109 +161,181 @@ int	test2(list *l)
 	return (n);
 }
 
-void	sort_3(list *l, tab *table)
+void	sort_3(list *l, tab table)
 {
 	int	a;
 	int b;
 	int c;
+	int t;
 
-	a = table->location->value;
-	if (table->size == 1)
+	printf("sort_3\n");
+
+
+	if (table.size >= 1)
 	{
-		pb(l);
+		a = l->node_a->value;
+		printf("a = %d\n", a);
 	}
-	if (table->size == 2)
+	if (table.size >= 2)
 	{
-		b = table->location->next->value;
-		if (b > a)
-			sb(l);
-		pb(l);
-		pb(l);
+		b = l->node_a->next->value;
+		printf("b = %d\n", b);
+		if (a > b)
+		{
+			sa(l);
+			t = a;
+			a = b;
+			b = t;
+			printf("a = %d  b = %d \n", a, b);
+			printa(l);
+		}
 	}
-	else
+	if (table.size == 3)
 	{
-		c = table->location->next->next->value;
-		if (b > a)
-			sb(l);
-		if (c > b)
-			sb(l);
-		if (c > a)
-			sb(l);
-		pb(l);
-		pb(l);
-		pb(l);
+		c = l->node_a->next->next->value;
+		printf("c = %d\n", c);
+		if (b > c)
+		{
+			ra(l);
+			sa(l);
+			rra(l);
+			t = b;
+			b = c;
+			c = t;
+			printf("a = %d  b = %d  c = %d  \n\n", a, b , c);
+			printa(l);
+		}
+		if (a > b )
+		{
+			sa(l);
+			printa(l);
+		}
 	}
 }
 
-node	*find_p(list *l, tab *table)
+node	*find_p(list *l, tab table)
 {
-	return (table->location);
+	return (table.location);
 }
 
-int	rec_sort(list *l, tab *table)
+void	to_top_a(list *l, tab table)
+{
+	int i;
+
+	printf("\nto top\n");
+	i = 0;
+	//si bas de a
+	if(table.stack == 0 && table.location != l->node_a)
+	{
+		while(i < table.size)
+		{
+			rra(l);
+			i++;
+		}
+	}
+	i = 0;
+	//si b
+	if(table.stack == 1)
+	{
+		//si bas
+		if(table.location != l->node_b)
+		{
+			while(i < table.size)
+			{
+				rrb(l);
+				i++;
+			}
+		}
+		i = 0;
+		while(i < table.size)
+		{
+			pa(l);
+			i++;
+		}
+	}
+	printa(l);
+
+}
+
+int	rec_sort(list *l, tab table)
 {
 	int		n;
 	node	*pivot;
-	tab		*tp;
-	tab		*tm;
+	tab		tp;
+	tab		tm;
 
 	n = 0;
-	tp->size = 0;
-	tm->size = 0;
-
+	tp.size = 0;
+	tm.size = 0;
+printf("rec_sort\n");
  	//resolution simple
-	if (table->size <= 3)
+	if (table.size <= 3)
+	{
+		to_top_a(l, table);
 		sort_3(l, table);
+	}
 	//separation au pivot
 	else
 	{
 		pivot = find_p(l, table);
+		printf ("pivot = %d\n", pivot->value);
 		//tri par rapport au pivot
-		if (table->stack == 0){
-		while (n < table->size)
+		if (table.stack == 0)
 		{
-			if (pivot->value <= l->node_a->value)
+			while ((tp.size + tm.size) < table.size)
 			{
-				pb(l);
-				tp->size++;
+				if (pivot->value <= l->node_a->value)
+				{
+					pb(l);
+					printa(l);
+					tp.size++;
+				}
+				else
+				{
+					pb(l);
+					printa(l);
+					if(tm.size == 0)
+						tm.location = l->node_b;
+					rb(l);
+					printa(l);
+					tm.size++;
+				}
 			}
-			else
-			{
-				pb(l);
-				if(tm->size == 0)
-					tm->location = l->node_b;
-				rrb(l);
-				tm->size++;
-			}
+		tp.location = l->node_b;
+		tp.stack = 1;
+		tm.stack = 1;
+		printf("stack b, tp.loc = %d , tp.size = %d, tm.loc = %d , tm.size = %d \n", tp.location->index, tp.size, tm.location->index, tm.size);
 		}
-		tp->location = l->node_b;
-		tp->stack = 1;
-		tm->stack = 1;
-		}
-		else{
-		while (n < table->size)
+		else
 		{
-			if (pivot->value <= l->node_b->value)
+			while ((tp.size + tm.size) < table.size)
 			{
-				pa(l);
-				tp->size++;
+				if (pivot->value <= l->node_b->value)
+				{
+					pa(l);
+					printa(l);
+					tp.size++;
+				}
+				else
+				{
+					pa(l);
+					printa(l);
+					if(tm.size == 0)
+						tm.location = l->node_a;
+					ra(l);
+					printa(l);
+					tm.size++;
+				}
 			}
-			else
-			{
-				pa(l);
-				if(tm->size == 0)
-					tm->location = l->node_b;
-				rra(l);
-				tm->size++;
-			}
-		}
-		tp->location = l->node_b;
-		tp->stack = 0;
-		tm->stack = 0;
+		tp.location = l->node_a;
+		tp.stack = 0;
+		tm.stack = 0;
+		printf("stack a, tp.loc = %d , tp.size = %d, tm.loc = %d , tm.size = %d \n", tp.location->index, tp.size, tm.location->index, tm.size);
 		}
 
 		rec_sort(l, tp);
 		rec_sort(l, tm);
+
 	}
 	return (n);
 }

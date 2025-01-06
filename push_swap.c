@@ -19,17 +19,20 @@ int	main(int argc, char *argv[])
 	node_a1->next = node_a;
 
 	l = init_list(node_a, argc);
-
+	printa(l);
 //	test_i(l);
 //	i = bulle_t(l);
 
-	i = test2(l);
+//	i = test2(l);
 
-//	tab	*table;
-//	table->location = l->node_a;
-//	table->size = argc;
-//	table->stack = 0;
-//	i = rec_sort(l, table);
+	tab	table;
+	table.location = l->node_a;
+	printf("argc = %d \n", argc);
+	table.size = argc -1;
+	table.stack = 0;
+
+
+	i = rec_sort(l, table);
 
 
 	printa(l);

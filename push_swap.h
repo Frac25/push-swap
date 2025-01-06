@@ -52,4 +52,4 @@ void	rrr(list *l);
 int	test_i(list *stack);
 int	bulle_t(list *l);
 int	test2(list *l);
-int	rec_sort(list *l, tab *table);
+int	rec_sort(list *l, tab table);
