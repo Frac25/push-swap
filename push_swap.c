@@ -29,7 +29,7 @@ int	main(int argc, char *argv[])
 	table.location = l->node_a;
 	printf("argc = %d \n", argc);
 	table.size = argc -1;
-	table.stack = 0;
+	table.position = u_a;
 
 
 	i = rec_sort(l, table);

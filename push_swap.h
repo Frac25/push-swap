@@ -21,11 +21,20 @@ typedef struct lis
 	int		dim_b;
 } list;
 
+
+typedef enum po
+{
+	u_a,
+	d_a,
+	u_b,
+	d_b,
+} pos;
+
 typedef struct ta
 {
 	node	*location;
 	int		size;
-	int		stack;
+	pos		position;
 } tab;
 
 

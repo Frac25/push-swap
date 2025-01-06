@@ -224,8 +224,7 @@ void	to_top_a(list *l, tab table)
 
 	printf("\nto top\n");
 	i = 0;
-	//si bas de a
-	if(table.stack == 0 && table.location != l->node_a)
+	if(table.position == d_a)
 	{
 		while(i < table.size)
 		{
@@ -234,19 +233,18 @@ void	to_top_a(list *l, tab table)
 		}
 	}
 	i = 0;
-	//si b
-	if(table.stack == 1)
+	if(table.position == d_b)
 	{
-		//si bas
-		if(table.location != l->node_b)
+		while(i < table.size)
 		{
-			while(i < table.size)
-			{
-				rrb(l);
-				i++;
-			}
+			rrb(l);
+			pa(l);
+			i++;
 		}
-		i = 0;
+	}
+	i = 0;
+	if(table.position == u_b)
+	{
 		while(i < table.size)
 		{
 			pa(l);
@@ -274,13 +272,13 @@ printf("rec_sort\n");
 		to_top_a(l, table);
 		sort_3(l, table);
 	}
-	//separation au pivot
+	//split
 	else
 	{
 		pivot = find_p(l, table);
 		printf ("pivot = %d\n", pivot->value);
 		//tri par rapport au pivot
-		if (table.stack == 0)
+		if (table.position == u_a)
 		{
 			while ((tp.size + tm.size) < table.size)
 			{
@@ -289,6 +287,7 @@ printf("rec_sort\n");
 					pb(l);
 					printa(l);
 					tp.size++;
+					tp.location = l->node_b;
 				}
 				else
 				{
@@ -301,12 +300,11 @@ printf("rec_sort\n");
 					tm.size++;
 				}
 			}
-		tp.location = l->node_b;
-		tp.stack = 1;
-		tm.stack = 1;
-		printf("stack b, tp.loc = %d , tp.size = %d, tm.loc = %d , tm.size = %d \n", tp.location->index, tp.size, tm.location->index, tm.size);
+		tp.position = u_b;
+		tm.position = d_b;
+		printf("tp.pos = %u , tp.loc = %d , tp.size = %d, tm.loc = %d , tm.size = %d \n", tp.position, tp.location->index, tp.size, tm.location->index, tm.size);
 		}
-		else
+		if (table.position == u_b)
 		{
 			while ((tp.size + tm.size) < table.size)
 			{
@@ -315,6 +313,7 @@ printf("rec_sort\n");
 					pa(l);
 					printa(l);
 					tp.size++;
+					tp.location = l->node_a;
 				}
 				else
 				{
@@ -327,15 +326,68 @@ printf("rec_sort\n");
 					tm.size++;
 				}
 			}
-		tp.location = l->node_a;
-		tp.stack = 0;
-		tm.stack = 0;
-		printf("stack a, tp.loc = %d , tp.size = %d, tm.loc = %d , tm.size = %d \n", tp.location->index, tp.size, tm.location->index, tm.size);
-		}
 
+		tp.position = u_a;
+		tm.position = d_a;
+		printf("tp.pos = %u , tp.loc = %d , tp.size = %d, tm.loc = %d , tm.size = %d \n", tp.position, tp.location->index, tp.size, tm.location->index, tm.size);
+		}
+		if (table.position == d_a)
+		{
+			while ((tp.size + tm.size) < table.size)
+			{
+				rra(l);
+				if (pivot->value <= l->node_a->value)
+				{
+					pb(l);
+					printa(l);
+					tp.size++;
+					tp.location = l->node_b;
+				}
+				else
+				{
+					pb(l);
+					printa(l);
+					if(tm.size == 0)
+						tm.location = l->node_b;
+					rb(l);
+					printa(l);
+					tm.size++;
+				}
+			}
+		tp.position = u_b;
+		tm.position = d_b;
+		printf("tp.pos = %u , tp.loc = %d , tp.size = %d, tm.loc = %d , tm.size = %d \n", tp.position, tp.location->index, tp.size, tm.location->index, tm.size);
+		}
+		if (table.position == d_b)
+		{
+			while ((tp.size + tm.size) < table.size)
+			{
+				rrb(l);
+				if (pivot->value <= l->node_b->value)
+				{
+					pa(l);
+					printa(l);
+					tp.size++;
+					tp.location = l->node_a;
+				}
+				else
+				{
+					pa(l);
+					printa(l);
+					if(tm.size == 0)
+						tm.location = l->node_a;
+					ra(l);
+					printa(l);
+					tm.size++;
+				}
+			}
+		tp.position = u_a;
+		tm.position = d_a;
+		printf("tp.pos = %u , tp.loc = %d , tp.size = %d, tm.loc = %d , tm.size = %d \n", tp.position, tp.location->index, tp.size, tm.location->index, tm.size);
+		}
 		rec_sort(l, tp);
 		rec_sort(l, tm);
-
 	}
+
 	return (n);
 }
