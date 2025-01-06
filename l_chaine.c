@@ -32,7 +32,9 @@ list	*init_list(node *n, int arg)
 
 	new_list->node_a = n;
 	new_list->node_b = NULL;
-	new_list->dim_a = arg;
+	new_list->dim_a = arg; //verifier
+	new_list->dim_b = 0;
+	new_list->dis = 0;
 
 	return(new_list);
 }
@@ -54,9 +56,10 @@ void	printa(list *l)
 		if(na != NULL)
 		{
 			printf("ai : %d     ", na->index);
-			printf("p : %d     ", (na->prev)->value);
+			printf("p : %d     ", na->prev->value);
 			printf("v : %d     ", na->value);
-			printf("n : %d               ", (na->next)->value);
+			printf("n : %d               ", na->next->value);
+			printf("d : %d               ", na->discret);
 		}
 		if(nb != NULL)
 		{
@@ -91,4 +94,5 @@ void	tester(list *l)
 			printf("tester KO a , i = %d\n", i);
 		nt = nt->next;
 	}
+	printf("si pas de KO, cést OK!\n");
 }

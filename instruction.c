@@ -1,6 +1,6 @@
 #include"push_swap.h"
 
-void	sa(list *l)
+int	sa(list *l)
 {
 	node	*node_tmp;
 
@@ -13,9 +13,11 @@ void	sa(list *l)
 	node_tmp->next = l->node_a;
 	l->node_a = node_tmp;
 	printf("sa\n");
+	write(fd, "sa\n", 3);
+	return(1);
 }
 
-void	sb(list *l)
+int	sb(list *l)
 {
 	node	*node_tmp;
 
@@ -28,9 +30,11 @@ void	sb(list *l)
 	node_tmp->next = l->node_b;
 	l->node_b = node_tmp;
 	printf("sb\n");
+	write(fd, "sb\n", 3);
+	return(1);
 }
 
-void	ss(list *l)
+int	ss(list *l)
 {
 	node	*node_tmp;
 
@@ -51,49 +55,62 @@ void	ss(list *l)
 	l->node_b->prev = node_tmp;
 	node_tmp->next = l->node_b;
 	l->node_b = node_tmp;
-
 	printf("ss\n");
+	write(fd, "ss\n", 3);
+	return(1);
 }
 
-void	ra(list *l)
+int	ra(list *l)
 {
 	l->node_a = l->node_a->next;
 	printf("ra\n");
+	write(fd, "ra\n", 3);
+	return(1);
 }
 
-void	rb(list *l)
+int	rb(list *l)
 {
 	l->node_b = l->node_b->next;
 	printf("rb\n");
+	write(fd, "rb\n", 3);
+	return(1);
 }
 
-void	rr(list *l)
+int	rr(list *l)
 {
 	l->node_a = l->node_a->next;
 	l->node_b = l->node_b->next;
 	printf("rr\n");
+	write(fd, "rr\n", 3);
+	return(1);
 }
 
-void	rra(list *l)
+int	rra(list *l)
 {
 	l->node_a = l->node_a->prev;
 	printf("rra\n");
+	write(fd, "rra\n", 4);
+	return(1);
 }
 
-void	rrb(list *l)
+int	rrb(list *l)
 {
 	l->node_b = l->node_b->prev;
 	printf("rrb\n");
+	write(fd, "rrb\n", 4);
+	return(1);
 }
 
-void	rrr(list *l)
+int	rrr(list *l)
 {
 	l->node_a = l->node_a->prev;
 	l->node_b = l->node_b->prev;
 	printf("rrr\n");
+	write(fd, "rrr\n", 4);
+	return(1);
 }
 
-void	pa(list *l)
+int	pa(list *l)
 {
 	node *a1;
 	node *bn1;
@@ -143,9 +160,11 @@ void	pa(list *l)
 
 		l->node_b = bn1;
 	}
+	write(fd, "pa\n", 3);
+	return(1);
 }
 
-void	pb(list *l)
+int	pb(list *l)
 {
 	node *b1;
 	node *an1;
@@ -195,4 +214,6 @@ void	pb(list *l)
 
 		l->node_a = an1;
 	}
+	write(fd, "pb\n", 3);
+	return(1);
 }

@@ -1,8 +1,46 @@
 #include"push_swap.h"
 
+void	discret(list *l)
+{
+	int		i;
+	node	*n;
+	tab		table;
+
+	i = 1;
+	n = l->node_a;
+	while(i < l->dim_a)
+	{
+		n->discret = i;
+		n->value_init = n->value;
+		n->value = n->index + 1;
+		i++;
+		n = n->next;
+	}
+
+	table.location = l->node_a;
+	table.size = l->dim_a - 1;
+	table.position = u_a;
+
+	printf("discret :\n");
+	printa(l);
+	rec_sort(l, table);
+
+	i = 1;
+	n = l->node_a;
+	while(i < l->dim_a)
+	{
+		n->value = n->value_init;
+		i++;
+		n = n->next;
+	}
+	l->dis = 1;
+}
+
+
 int	main(int argc, char *argv[])
 {
 	int		i;
+	int		n;
 	list	*l;
 	node	*node_a;
 	node	*node_a1;
@@ -21,26 +59,26 @@ int	main(int argc, char *argv[])
 	l = init_list(node_a, argc);
 	printa(l);
 //	test_i(l);
-//	i = bulle_t(l);
-
-//	i = test2(l);
 
 	tab	table;
 	table.location = l->node_a;
-	printf("argc = %d \n", argc);
 	table.size = argc -1;
 	table.position = u_a;
+	n = rec_sort(l, table);
 
-
-	i = rec_sort(l, table);
-
+	discret(l);
+	fd = open("resultat.txt", O_WRONLY);
+	table.location = l->node_a;
+	table.size = argc -1;
+	table.position = u_a;
+	n = rec_sort(l, table);
 
 	printa(l);
+	printf("dernier tri\n");
+	tester(l);
+	printf("n = %d\n", n);
 
-//	tester(l);
-
-	printf("\ni = %d\n", i);
-
+	close(fd);
 	return(0);
 }
 

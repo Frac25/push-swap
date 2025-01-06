@@ -5,22 +5,8 @@
 #include<unistd.h>
 #include<stdlib.h>
 
-typedef struct nod
-{
-	int			value;
-	struct nod	*next;
-	struct nod	*prev;
-	int			index;
-} node;
-
-typedef struct lis
-{
-	node	*node_a;
-	node	*node_b;
-	int		dim_a;
-	int		dim_b;
-} list;
-
+#include<fcntl.h> // pour la fct open
+int	fd; // pour ecrire
 
 typedef enum po
 {
@@ -29,6 +15,25 @@ typedef enum po
 	u_b,
 	d_b,
 } pos;
+
+typedef struct nod
+{
+	int			value;
+	struct nod	*next;
+	struct nod	*prev;
+	int			index;
+	int			value_init;
+	int			discret;
+} node;
+
+typedef struct lis
+{
+	node	*node_a;
+	node	*node_b;
+	int		dim_a;
+	int		dim_b;
+	int		dis;
+} list;
 
 typedef struct ta
 {
@@ -46,19 +51,17 @@ list	*init_list(node *n, int arg);
 void	printa(list *l);
 void	tester(list *l);
 
-void	sa(list *l);
-void	sb(list *l);
-void	ss(list *l);
-void	pa(list *l);
-void	pb(list *l);
-void	ra(list *l);
-void	rb(list *l);
-void	rr(list *l);
-void	rra(list *l);
-void	rrb(list *l);
-void	rrr(list *l);
+int		sa(list *l);
+int		sb(list *l);
+int		ss(list *l);
+int		pa(list *l);
+int		pb(list *l);
+int		ra(list *l);
+int		rb(list *l);
+int		rr(list *l);
+int		rra(list *l);
+int		rrb(list *l);
+int		rrr(list *l);
 
 int	test_i(list *stack);
-int	bulle_t(list *l);
-int	test2(list *l);
 int	rec_sort(list *l, tab table);
