@@ -37,9 +37,12 @@ typedef struct lis
 
 typedef struct ta
 {
-	node	*location;
-	int		size;
-	pos		position;
+	node		*location;
+	int			size;
+	pos			position;
+	node		*pivot;
+	struct ta	*tp;
+	struct ta	*tm;
 } tab;
 
 
@@ -47,6 +50,7 @@ int	ft_atoi(const char *str);
 
 node	*add_node(node *first_node, int value);
 list	*init_list(node *n, int arg);
+tab		*init_tab(node *location, int size);
 
 void	printa(list *l);
 void	tester(list *l);
@@ -63,5 +67,8 @@ int		rra(list *l);
 int		rrb(list *l);
 int		rrr(list *l);
 
-int	test_i(list *stack);
-int	rec_sort(list *l, tab table);
+int		test_i(list *stack);
+
+int		rec_sort(list *l, tab *table);
+int		split_a(list *l, tab *table);
+int		split_b(list *l, tab *table);

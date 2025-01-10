@@ -4,7 +4,7 @@ void	discret(list *l)
 {
 	int		i;
 	node	*n;
-	tab		table;
+	tab		*table;
 
 	i = 1;
 	n = l->node_a;
@@ -16,10 +16,10 @@ void	discret(list *l)
 		i++;
 		n = n->next;
 	}
-
-	table.location = l->node_a;
-	table.size = l->dim_a - 1;
-	table.position = u_a;
+	table = malloc(sizeof(table));
+	table->location = l->node_a;
+	table->size = l->dim_a - 1;
+	table->position = u_a;
 
 	printf("discret :\n");
 	printa(l);
@@ -36,6 +36,21 @@ void	discret(list *l)
 	l->dis = 1;
 }
 
+tab	*init_tab(node *location, int size)
+{
+	tab		*table;
+
+	table = malloc(sizeof(tab));
+	if(table == NULL)
+		return(NULL);
+	table->size = size;
+	table->location = location;
+	table->position = u_a;
+	table->pivot = NULL;
+	table->tm = NULL;
+	table->tp = NULL;
+	return(table);
+}
 
 int	main(int argc, char *argv[])
 {
@@ -44,6 +59,7 @@ int	main(int argc, char *argv[])
 	list	*l;
 	node	*node_a;
 	node	*node_a1;
+	tab		*table;
 
 	node_a = add_node(NULL,ft_atoi(argv[argc - 1]));
 	node_a1 = node_a;
@@ -59,18 +75,11 @@ int	main(int argc, char *argv[])
 	l = init_list(node_a, argc);
 	printa(l);
 //	test_i(l);
-
-	tab	table;
-	table.location = l->node_a;
-	table.size = argc -1;
-	table.position = u_a;
+	table = init_tab(l->node_a, (argc - 1));
 	n = rec_sort(l, table);
 
 	discret(l);
-	fd = open("resultat.txt", O_WRONLY);
-	table.location = l->node_a;
-	table.size = argc -1;
-	table.position = u_a;
+//	fd = open("resultat.txt", O_WRONLY);
 	n = rec_sort(l, table);
 
 	printa(l);
@@ -78,7 +87,7 @@ int	main(int argc, char *argv[])
 	tester(l);
 	printf("n = %d\n", n);
 
-	close(fd);
+//	close(fd);
 	return(0);
 }
 
