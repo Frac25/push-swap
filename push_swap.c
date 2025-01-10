@@ -1,92 +1,51 @@
 #include"push_swap.h"
 
-void	discret(list *l)
+void	discret(list *l, tab *table)
 {
-	int		i;
-	node	*n;
-	tab		*table;
+	int	i;
+	nod	*node_t;
+	tab	*table_t;
 
-	i = 1;
-	n = l->node_a;
-	while(i < l->dim_a)
-	{
-		n->discret = i;
-		n->value_init = n->value;
-		n->value = n->index + 1;
-		i++;
-		n = n->next;
-	}
-	table = malloc(sizeof(table));
-	table->location = l->node_a;
-	table->size = l->dim_a - 1;
-	table->position = u_a;
-
-	printf("discret :\n");
-	printa(l);
 	rec_sort(l, table);
-
 	i = 1;
-	n = l->node_a;
-	while(i < l->dim_a)
+	node_t = l->node_a;
+	while(i++ < l->dim_a)
 	{
-		n->value = n->value_init;
-		i++;
-		n = n->next;
+		node_t->discret = i;
+		node_t->value = node_t->index + 1;
+		node_t = node_t->next;
+	}
+	table_t = init_tab(l->node_a, l->dim_a - 1);
+	rec_sort(l, table_t);
+	i = 1;
+	node_t = l->node_a;
+	while(i++ < l->dim_a)
+	{
+		node_t->value = node_t->value_init;
+		node_t = node_t->next;
 	}
 	l->dis = 1;
 }
 
-tab	*init_tab(node *location, int size)
-{
-	tab		*table;
-
-	table = malloc(sizeof(tab));
-	if(table == NULL)
-		return(NULL);
-	table->size = size;
-	table->location = location;
-	table->position = u_a;
-	table->pivot = NULL;
-	table->tm = NULL;
-	table->tp = NULL;
-	return(table);
-}
-
 int	main(int argc, char *argv[])
 {
-	int		i;
 	int		n;
 	list	*l;
-	node	*node_a;
-	node	*node_a1;
+	nod		*stack_a;
 	tab		*table;
 
-	node_a = add_node(NULL,ft_atoi(argv[argc - 1]));
-	node_a1 = node_a;
-	i = argc -2;;
-	while (i > 0)
-	{
-		node_a = add_node(node_a, ft_atoi(argv[i]));
-		i--;
-	}
-	node_a->prev = node_a1;
-	node_a1->next = node_a;
-
-	l = init_list(node_a, argc);
+	stack_a = init_stack(argc, argv);
+	l = init_list(stack_a, argc);
 	printa(l);
 //	test_i(l);
 	table = init_tab(l->node_a, (argc - 1));
-	n = rec_sort(l, table);
-
-	discret(l);
+	discret(l, table);
 //	fd = open("resultat.txt", O_WRONLY);
 	n = rec_sort(l, table);
 
 	printa(l);
-	printf("dernier tri\n");
 	tester(l);
 	printf("n = %d\n", n);
-
 //	close(fd);
 	return(0);
 }

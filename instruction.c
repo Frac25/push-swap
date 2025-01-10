@@ -2,7 +2,7 @@
 
 int	sa(list *l)
 {
-	node	*node_tmp;
+	nod	*node_tmp;
 
 	node_tmp = l->node_a->next;
 	l->node_a->prev->next = l->node_a->next;
@@ -19,7 +19,7 @@ int	sa(list *l)
 
 int	sb(list *l)
 {
-	node	*node_tmp;
+	nod	*node_tmp;
 
 	node_tmp = l->node_b->next;
 	l->node_b->prev->next = l->node_b->next;
@@ -36,7 +36,7 @@ int	sb(list *l)
 
 int	ss(list *l)
 {
-	node	*node_tmp;
+	nod	*node_tmp;
 
 	node_tmp = l->node_a->next;
 	l->node_a->prev->next = l->node_a->next;
@@ -112,8 +112,8 @@ int	rrr(list *l)
 
 int	pa(list *l)
 {
-	node *a1;
-	node *bn1;
+	nod *a1;
+	nod *bn1;
 
 	printf("pa\n");
 	if (l->node_b == NULL)
@@ -166,8 +166,8 @@ int	pa(list *l)
 
 int	pb(list *l)
 {
-	node *b1;
-	node *an1;
+	nod *b1;
+	nod *an1;
 
 	printf("pb\n");
 	if (l->node_a == NULL)

@@ -3,96 +3,84 @@
 #include<stdlib.h>
 #include"push_swap.h"
 
-node	*add_node(node *n, int value)
+nod	*add_node(nod *n, int value)
 {
-	node	*new_node;
+	nod	*new_node;
 
-	new_node = malloc(sizeof(node));
+	new_node = malloc(sizeof(nod));
 	if(new_node == NULL)
+	{
+		free(new_node);
 		return(NULL);
+	}
 	new_node->value = value;
+	new_node->value_init = value;
 	new_node->next = n;
 	new_node->prev = NULL;
-	if(n != NULL)
-	new_node->index = n->index + 1;
+	new_node->discret = 0;
+
+	if(n == NULL)
+		new_node->index = 0;
 	else
-	new_node->index = 0;
+		new_node->index = n->index + 1;
+
 	if(n != NULL)
 		n->prev = new_node;
 	return (new_node);
 }
 
-list	*init_list(node *n, int arg)
+nod	*init_stack(int argc, char *argv[])
+{
+	int		i;
+	nod	*node_a;
+	nod	*node_a1;
+
+	node_a = add_node(NULL,ft_atoi(argv[argc - 1]));
+	node_a1 = node_a;
+	i = argc -2;;
+	while (i > 0)
+	{
+		node_a = add_node(node_a, ft_atoi(argv[i]));
+		i--;
+	}
+	node_a->prev = node_a1;
+	node_a1->next = node_a;
+	return(node_a);
+}
+
+list	*init_list(nod *stack, int size)
 {
 	list	*new_list;
 
 	new_list = malloc(sizeof(list));
 	if(new_list == NULL)
-	return(NULL);
-
-	new_list->node_a = n;
+	{
+		free(new_list);
+		return(NULL);
+	}
+	new_list->node_a = stack;
 	new_list->node_b = NULL;
-	new_list->dim_a = arg; //verifier
+	new_list->dim_a = size; //verifier
 	new_list->dim_b = 0;
 	new_list->dis = 0;
-
 	return(new_list);
 }
 
-
-void	printa(list *l)
+tab	*init_tab(nod *location, int size)
 {
-	node *na = NULL;
-	node *nb = NULL;
-	int	i;
+	tab		*new_table;
 
-	i = 0;
-	if(l->node_a != NULL)
-		na = l->node_a;
-	if(l->node_b != NULL)
-		nb = l->node_b;
-	while(i <= l->dim_a)
+	new_table = malloc(sizeof(tab));
+	if(new_table == NULL)
 	{
-		if(na != NULL)
-		{
-			printf("ai : %d     ", na->index);
-			printf("p : %d     ", na->prev->value);
-			printf("v : %d     ", na->value);
-			printf("n : %d               ", na->next->value);
-			printf("d : %d               ", na->discret);
-		}
-		if(nb != NULL)
-		{
-			printf("bi : %d     ", nb->index);
-			printf("p : %d     ", (nb->prev)->value);
-			printf("v : %d     ", nb->value);
-			printf("n : %d\n", (nb->next)->value);
-		}
-		else
-			printf("\n");
-		if(na != NULL)
-			na = na->next;
-		if(nb != NULL)
-			nb = nb->next;
-		i++;
+		free(new_table);
+		return(NULL);
 	}
-
-	printf("\n");
-}
-
-void	tester(list *l)
-{
-	node	*nt;
-	int		i;
-		nt = l->node_a;
-	i = 0;
-	while(nt != l->node_a->prev)
-	{
-		if(nt->value < nt->next->value)
-			i++;
-		else
-			printf("tester KO a , i = %d\n", i);
-		nt = nt->next;
-	}
-	printf("si pas de KO, cést OK!\n");
+	new_table->size = size;
+	new_table->location = location;
+	new_table->position = u_a;
+	new_table->pivot = NULL;
+	new_table->tm = NULL;
+	new_table->tp = NULL;
+	return(new_table);
 }

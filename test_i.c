@@ -109,131 +109,59 @@ int	test_i(list *stack)
 	return(0);
 }
 
-
-
-node *p_moyen(list *l, tab *table)
+void	printa(list *l)
 {
-	int		i;
-	int		somme_p;
-	int		valeur_p;
-	node	*location_t;
+	nod *na = NULL;
+	nod *nb = NULL;
+	int	i;
 
 	i = 0;
-	somme_p = 0;
-	location_t = table->location;
-	while(i < table->size)
+	if(l->node_a != NULL)
+		na = l->node_a;
+	if(l->node_b != NULL)
+		nb = l->node_b;
+	while(i <= l->dim_a)
 	{
-		somme_p += location_t->discret;
-		location_t = location_t->next;
+		if(na != NULL)
+		{
+			printf("ai : %d     ", na->index);
+			printf("p : %d     ", na->prev->value);
+			printf("v : %d     ", na->value);
+			printf("n : %d               ", na->next->value);
+			printf("d : %d               ", na->discret);
+		}
+		if(nb != NULL)
+		{
+			printf("bi : %d     ", nb->index);
+			printf("p : %d     ", (nb->prev)->value);
+			printf("v : %d     ", nb->value);
+			printf("n : %d\n", (nb->next)->value);
+		}
+		else
+			printf("\n");
+		if(na != NULL)
+			na = na->next;
+		if(nb != NULL)
+			nb = nb->next;
 		i++;
 	}
-	valeur_p = (somme_p / i);
-	location_t = table->location;
-	while(location_t->discret != valeur_p) //i < table.size &&
-		location_t = location_t->next;
-	return (location_t);
+
+	printf("\n");
 }
 
-node	*find_p(list *l, tab *table)
+void	tester(list *l)
 {
-	if(l->dis == 1)
-		return(p_moyen(l, table));
-	printf("find_p\n");
-	if(table->position == u_a)
-		return(l->node_a);
-	if(table->position == u_b)
-		return(l->node_b);
-	if(table->position == d_a)
-		return(l->node_a->prev);
-	if(table->position == d_b)
-		return(l->node_b->prev);
-	return(NULL);
-}
-
-int	to_top_a(list *l, tab *table)
-{
-	int i;
-	int n;
-
-//	printf("\nto top\n");
+	nod	*nt;
+	int		i;
+		nt = l->node_a;
 	i = 0;
-	n = 0;
-	if(table->position == d_a)
+	while(nt != l->node_a->prev)
 	{
-		while(i < table->size)
-		{
-			n += rra(l);
+		if(nt->value < nt->next->value)
 			i++;
-		}
-	}
-	i = 0;
-	if(table->position == d_b)
-	{
-		while(i < table->size)
-		{
-			n += rrb(l);
-			n += pa(l);
-			i++;
-		}
-	}
-	i = 0;
-	if(table->position == u_b)
-	{
-		while(i < table->size)
-		{
-			n += pa(l);
-			i++;
-		}
-	}
-	return (n);
-}
-
-int	sort_3(list *l, tab *table)
-{
-	int n;
-
-	n = 0;
-	n += to_top_a(l, table);
-
-	if (table->size >= 2 && (l->node_a->value > l->node_a->next->value))
-			n += sa(l);
-	if (table->size == 3)
-	{
-		if (l->node_a->next->value > l->node_a->next->next->value)
-		{
-			n += ra(l);
-			n += sa(l);
-			n += rra(l);
-		}
-		if (l->node_a->value > l->node_a->next->value)
-			n += sa(l);
-	}
-	return (n);
-}
-
-int	rec_sort(list *l, tab *table)
-{
-	int	n;
-
-	n = 0;
-	if (table->size <= 3) //resolution simple
-	{
-
-		n += sort_3(l, table);
-	}
-	else //split
-	{
-		table->tm = init_tab(NULL,0);
-		table->tp = init_tab(NULL,0);
-		table->pivot = find_p(l, table);
-		if (table->position == u_a || table->position == d_a)
-			n += split_a(l, table);
 		else
-			n += split_b(l, table);
-		n += rec_sort(l, table->tp);
-		n += rec_sort(l, table->tm);
-		free(table->tm);
-		free(table->tp);
+			printf("tester KO a , i = %d\n", i);
+		nt = nt->next;
 	}
-	return (n);
+	printf("si pas de KO, c'est OK!\n");
 }

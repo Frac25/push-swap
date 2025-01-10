@@ -16,20 +16,20 @@ typedef enum po
 	d_b,
 } pos;
 
-typedef struct nod
+typedef struct no
 {
-	int			value;
-	struct nod	*next;
-	struct nod	*prev;
+	struct no	*next;
+	struct no	*prev;
 	int			index;
+	int			value;
 	int			value_init;
 	int			discret;
-} node;
+} nod;
 
 typedef struct lis
 {
-	node	*node_a;
-	node	*node_b;
+	nod	*node_a;
+	nod	*node_b;
 	int		dim_a;
 	int		dim_b;
 	int		dis;
@@ -37,10 +37,10 @@ typedef struct lis
 
 typedef struct ta
 {
-	node		*location;
+	nod		*location;
 	int			size;
 	pos			position;
-	node		*pivot;
+	nod		*pivot;
 	struct ta	*tp;
 	struct ta	*tm;
 } tab;
@@ -48,12 +48,14 @@ typedef struct ta
 
 int	ft_atoi(const char *str);
 
-node	*add_node(node *first_node, int value);
-list	*init_list(node *n, int arg);
-tab		*init_tab(node *location, int size);
+nod		*add_node(nod *node, int value);
+list	*init_list(nod *stack, int size);
+tab		*init_tab(nod *location, int size);
+nod		*init_stack(int argc, char *argv[]);
 
-void	printa(list *l);
-void	tester(list *l);
+int		rec_sort(list *l, tab *table);
+int		split_a(list *l, tab *table);
+int		split_b(list *l, tab *table);
 
 int		sa(list *l);
 int		sb(list *l);
@@ -68,7 +70,5 @@ int		rrb(list *l);
 int		rrr(list *l);
 
 int		test_i(list *stack);
-
-int		rec_sort(list *l, tab *table);
-int		split_a(list *l, tab *table);
-int		split_b(list *l, tab *table);
+void	printa(list *l);
+void	tester(list *l);
