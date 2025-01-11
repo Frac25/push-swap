@@ -20,13 +20,31 @@ nod	*add_node(nod *n, int value)
 	new_node->discret = 0;
 
 	if(n == NULL)
-		new_node->index = 0;
+		new_node->index = 1;
 	else
 		new_node->index = n->index + 1;
-
 	if(n != NULL)
 		n->prev = new_node;
 	return (new_node);
+}
+nod	*free_all_node(nod *node)
+{
+	nod *next_node;
+
+	if (node == NULL)
+		return (NULL);
+	while (node != NULL)
+	{
+		if(node != node->next)
+		{
+			next_node = node->next;
+			free(node);
+			node = next_node;
+		}
+		else
+			free(node);
+	}
+	return(NULL);
 }
 
 nod	*init_stack(int argc, char *argv[])
@@ -36,12 +54,15 @@ nod	*init_stack(int argc, char *argv[])
 	nod	*node_a1;
 
 	node_a = add_node(NULL,ft_atoi(argv[argc - 1]));
+	if(node_a == NULL)
+		return(NULL);
 	node_a1 = node_a;
 	i = argc -2;;
 	while (i > 0)
 	{
-		node_a = add_node(node_a, ft_atoi(argv[i]));
-		i--;
+		node_a = add_node(node_a, ft_atoi(argv[i--]));
+		if(node_a == NULL)
+			return(free_all_node(node_a1));
 	}
 	node_a->prev = node_a1;
 	node_a1->next = node_a;
@@ -54,10 +75,7 @@ list	*init_list(nod *stack, int size)
 
 	new_list = malloc(sizeof(list));
 	if(new_list == NULL)
-	{
-		free(new_list);
 		return(NULL);
-	}
 	new_list->node_a = stack;
 	new_list->node_b = NULL;
 	new_list->dim_a = size; //verifier
@@ -72,10 +90,7 @@ tab	*init_tab(nod *location, int size)
 
 	new_table = malloc(sizeof(tab));
 	if(new_table == NULL)
-	{
-		free(new_table);
 		return(NULL);
-	}
 	new_table->size = size;
 	new_table->location = location;
 	new_table->position = u_a;

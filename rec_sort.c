@@ -1,6 +1,6 @@
 #include"push_swap.h"
 
-nod *p_moyen(list *l, tab *table)
+nod *p_moyen(tab *table)
 {
 	int		i;
 	int		somme_p;
@@ -26,7 +26,7 @@ nod *p_moyen(list *l, tab *table)
 nod	*find_p(list *l, tab *table)
 {
 	if(l->dis == 1)
-		return(p_moyen(l, table));
+		return(p_moyen(table));
 	if(table->position == u_a)
 		return(l->node_a);
 	if(table->position == u_b)

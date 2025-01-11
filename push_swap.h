@@ -4,9 +4,9 @@
 #include<stdio.h>
 #include<unistd.h>
 #include<stdlib.h>
+#include<string.h>
 
-#include<fcntl.h> // pour la fct open
-int	fd; // pour ecrire
+#include"ft_printf.h"
 
 typedef enum po
 {
@@ -30,23 +30,24 @@ typedef struct lis
 {
 	nod	*node_a;
 	nod	*node_b;
-	int		dim_a;
-	int		dim_b;
-	int		dis;
+	int	dim_a;
+	int	dim_b;
+	int	dis;
 } list;
 
 typedef struct ta
 {
-	nod		*location;
+	nod			*location;
 	int			size;
 	pos			position;
-	nod		*pivot;
+	nod			*pivot;
 	struct ta	*tp;
 	struct ta	*tm;
 } tab;
 
 
-int	ft_atoi(const char *str);
+int		ft_atoi(const char *str);
+void	ft_putendl_fd(char *s, int fd);
 
 nod		*add_node(nod *node, int value);
 list	*init_list(nod *stack, int size);
