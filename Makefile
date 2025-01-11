@@ -2,9 +2,11 @@ NAME = push_swap
 
 PROG =	ft_printf\
 		ft_printnb\
-		instruction\
+		instruction1\
+		instruction2\
+		instruction3\
 		lib\
-		liste\mak
+		liste\
 		push_swap\
 		rec_sort\
 		split_pos\

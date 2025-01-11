@@ -171,34 +171,3 @@ void	tester(list *l)
 	printf("si pas de KO, c'est OK!\n");
 
 }
-
-
-
-nod	*discret_old(list *l)
-{
-	int	i;
-	nod	*node_t;
-	tab	*table_t;
-
-	i = 1;
-	node_t = l->node_a;
-	while(i++ < l->dim_a)
-	{
-		node_t->discret = i;
-		node_t->value = node_t->index + 1;
-		node_t = node_t->next;
-	}
-	table_t = init_tab(l->node_a, l->dim_a - 1);
-	if(table_t == NULL)
-		return(NULL);
-	rec_sort(l, table_t);
-	i = 1;
-	node_t = l->node_a;
-	while(i++ < l->dim_a)
-	{
-		node_t->value = node_t->value_init;
-		node_t = node_t->next;
-	}
-	l->dis = 1;
-	return (node_t);
-}

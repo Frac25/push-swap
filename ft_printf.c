@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 14:50:32 by sydubois          #+#    #+#             */
-/*   Updated: 2024/11/06 12:00:27 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/11 16:39:38 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,46 +97,3 @@ int	ft_printf(const char *str, ...)
 	va_end(args);
 	return (j);
 }
-/*
-int	main(void)
-{
-	char			t1 = '1'; //%c
-	int				t2 = 2; // %i
-	char			*t3 = "trois";//%s
-	char			*t4 = "4"; //%p
-	int				t5 = -2650; //%x
-	int				t6 = 2666; //%X
-	int				t7 = -777; //%d
-	unsigned int	t8 = 4294967295; //%u
-
-	ft_printf("t0 : pas d'arguments et pourcent \n");
-	printf("   t01 : %d\n", ft_printf("12345"));
-	printf("   t02 : %d\n", ft_printf("1%%4"));
-	printf("   t03 : %d\n", ft_printf("%%"));
-	printf("   t04 : %d\n\n", ft_printf("%%%%"));
-
-	ft_printf("t1 : char c : %c\n", t1);
-	printf("   t11 : %d\n\n", ft_printf("%%%c", t1));
-
-	ft_printf("t2 : integer b10 i : %i\n\n", t2);
-
-	ft_printf("t3 : string b10 s : %s\n, pointer : %p", t3);
-	printf("   t31 : %d\n", ft_printf("%s", t3));
-	printf("   t32 : %d\n\n", ft_printf("%s", (char *)NULL));
-
-	ft_printf("t4 : pointer p : %p\n", t4);
-	printf("   t41 : %d\n\n", ft_printf("%p", t4));
-
-	ft_printf("t5 : hexa x : %x\n", t5);
-	printf("   t51 : %d\n\n", ft_printf("%x", t5));
-
-	ft_printf("t6 : HEXA X : %X\n\n", t6);
-
-	ft_printf("t7 : decimal b10 d: %d\n", t7);
-	printf("   t71 : %d\n\n", ft_printf("%d", t7));
-
-	ft_printf("t8 : unsigned int u : %u\n\n", t8);
-
-	return (0);
-}
-*/
