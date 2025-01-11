@@ -11,6 +11,7 @@ PROG =	ft_printf\
 		rec_sort\
 		split_pos\
 		test\
+		sort\
 
 SRC = $(addsuffix .c, $(PROG))
 

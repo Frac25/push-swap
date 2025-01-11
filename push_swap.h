@@ -54,7 +54,10 @@ list	*init_list(nod *stack, int size);
 tab		*init_tab(nod *location, int size);
 nod		*init_stack(int argc, char *argv[]);
 
+int		sort(list *l, tab *table);
 int		rec_sort(list *l, tab *table);
+int		sort_123(list *l, tab *table);
+int		sort_3(list *l);
 int		split_a(list *l, tab *table);
 int		split_b(list *l, tab *table);
 
@@ -73,3 +76,4 @@ int		rrr(list *l);
 int		test_i(list *stack);
 void	printa(list *l);
 void	tester(list *l);
+int		ever_sorted(list *l);

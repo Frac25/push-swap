@@ -154,15 +154,14 @@ void	printa(list *l)
 void	tester(list *l)
 {
 	nod	*nt;
-	int		i;
+	int	i;
 
 	printa(l);
-
 	nt = l->node_a;
 	i = 0;
-	while(nt != l->node_a->prev)
+	while (nt != l->node_a->prev)
 	{
-		if(nt->value < nt->next->value)
+		if (nt->value < nt->next->value)
 			i++;
 		else
 			printf("tester KO a , i = %d\n", i);
@@ -170,4 +169,22 @@ void	tester(list *l)
 	}
 	printf("si pas de KO, c'est OK!\n");
 
+}
+
+int	ever_sorted(list *l)
+{
+	nod	*nt;
+	int	i;
+
+	nt = l->node_a;
+	i = 0;
+	while (nt != l->node_a->prev)
+	{
+		if (nt->value < nt->next->value)
+			i++;
+		else
+			return(0);
+		nt = nt->next;
+	}
+	return (1);
 }

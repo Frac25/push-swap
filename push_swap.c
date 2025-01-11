@@ -53,30 +53,10 @@ int	check_dup(list *l)
 	return (n);
 }
 
-void	discret(list *l)
+void error(void)
 {
-	int j;
-	int rank;
-	nod	*node_i;
-	nod	*node_j;
-
-	node_i = l->node_a;
-	node_j = l->node_a;
-	while (node_i->discret == 0)
-	{
-		rank = 0;
-		j = 0;
-		while (j < l->dim_a -1) //revoir dim_a pour supprimer le -1
-		{
-			if (node_i->value >= node_j->value)
-				rank++;
-			j++;
-			node_j = node_j->next;
-		}
-		node_i->discret = rank;
-		node_i = node_i->next;
-	}
-	l->dis = 1;
+	ft_putendl_fd("Error", 2);
+	exit(EXIT_FAILURE);
 }
 
 int	main(int argc, char *argv[])
@@ -86,44 +66,29 @@ int	main(int argc, char *argv[])
 	nod		*stack_a;
 	tab		*table;
 
+	n = 0;
 	if (argc <= 1)
 		return(0);
 	if(check_param(argc, argv) == 0)
-	{
-		ft_putendl_fd("Error", 2);
-		exit(EXIT_FAILURE);
-		return(0);
-	}
+		error();
 	stack_a = init_stack(argc, argv);
 	if (stack_a == NULL)
-	{
-		ft_putendl_fd("Error", 2);
-		exit(EXIT_FAILURE);
-		return(0);
-	}
+		error();
 	l = init_list(stack_a, argc);
 	if (l == NULL)
-	{
-		ft_putendl_fd("Error", 2);
-		exit(EXIT_FAILURE);
-		return(0);
-	}
+		error();
 	if(check_dup(l) != 0)
-	{
-		ft_putendl_fd("Error", 2);
-		exit(EXIT_FAILURE);
-		return(0);
-	}
+		error();
 	table = init_tab(l->node_a, (argc - 1));
 	if (table == NULL)
-	{
-		ft_putendl_fd("Error", 2);
-		exit(EXIT_FAILURE);
-		return(0);
-	}
-	discret(l);
+		error();
 //	printa(l);
-	n = rec_sort(l, table);
+	if (ever_sorted(l) == 1)
+		return(0);
+	if (argc == 4)
+		n = sort_3(l);
+	else
+		n = sort(l, table);
 	tester(l);
 	printf("n = %d\n", n);
 	return(1);

@@ -67,13 +67,11 @@ int	to_top_a(list *l, tab *table)
 	return (n);
 }
 
-int	sort_3(list *l, tab *table)
+int	sort_r3(list *l, tab *table)
 {
 	int n;
 
 	n = 0;
-	n += to_top_a(l, table);
-
 	if (table->size >= 2 && (l->node_a->value > l->node_a->next->value))
 			n += sa(l);
 	if (table->size == 3)
@@ -96,8 +94,11 @@ int	rec_sort(list *l, tab *table)
 
 	n = 0;
 	if (table->size <= 3) //resolution simple
-		n += sort_3(l, table);
-	else //split
+	{
+		n += to_top_a(l, table);
+		n += sort_r3(l, table);
+	}
+		else //split
 	{
 		table->tm = init_tab(NULL,0);
 		table->tp = init_tab(NULL,0);
