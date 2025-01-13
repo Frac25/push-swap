@@ -38,6 +38,8 @@ int	pa(list *l)
 		l->node_a->prev->next = l->node_a;
 		l->node_b = bn1;
 	}
+	l->dim_a++;
+	l->dim_b--;
 	ft_printf("pa\n");
 	return(1);
 }
@@ -80,6 +82,8 @@ int	pb(list *l)
 		l->node_b->prev->next = l->node_b;
 		l->node_a = an1;
 	}
+	l->dim_a--;
+	l->dim_b++;
 	ft_printf("pb\n");
 	return(1);
 }

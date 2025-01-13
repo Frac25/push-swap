@@ -37,10 +37,10 @@ int	check_dup(list *l)
 	node_j = l->node_a;
 	i = 0;
 	n = 0;
-	while (i < l->dim_a -1) // a verifier
+	while (i < l->dim_a)
 	{
 		j = 0;
-		while (j < l->dim_a -1) //revoir dim_a pour supprimer le -1
+		while (j < l->dim_a)
 		{
 			if (node_i != node_j && node_i->value == node_j->value)
 				n++;
@@ -71,10 +71,10 @@ int	main(int argc, char *argv[])
 		return(0);
 	if(check_param(argc, argv) == 0)
 		error();
-	stack_a = init_stack(argc, argv);
+	stack_a = init_stack(argv, argc - 1);
 	if (stack_a == NULL)
 		error();
-	l = init_list(stack_a, argc);
+	l = init_list(stack_a, argc - 1);
 	if (l == NULL)
 		error();
 	if(check_dup(l) != 0)

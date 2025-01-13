@@ -52,7 +52,7 @@ void	ft_putendl_fd(char *s, int fd);
 nod		*add_node(nod *node, int value);
 list	*init_list(nod *stack, int size);
 tab		*init_tab(nod *location, int size);
-nod		*init_stack(int argc, char *argv[]);
+nod		*init_stack(char *argv[], int size);
 
 int		sort(list *l, tab *table);
 int		rec_sort(list *l, tab *table);

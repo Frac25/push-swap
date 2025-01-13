@@ -12,7 +12,7 @@ void	discret(list *l)
 	{
 		rank = 0;
 		j = 0;
-		while (j < l->dim_a -1) //revoir dim_a pour supprimer le -1
+		while (j < l->dim_a)
 		{
 			if (node_i->value >= node_j->value)
 				rank++;
@@ -73,3 +73,15 @@ int	sort_3(list *l)
 		n += sa(l);
 	return (n);
 }
+
+int	sort_5(list *l)
+{
+	int	n;
+
+	n = 0;
+	n = l->dim_a;
+	printf("s5\n");
+
+	return (n);
+}
+

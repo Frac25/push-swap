@@ -21,7 +21,7 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-all  :		$(NAME)
+all :		$(NAME)
 
 $(NAME) :	$(OBJ)
 #			ar rcs $(NAME) $(OBJ)
@@ -38,4 +38,7 @@ fclean : 	clean
 
 re : 		fclean all
 
-.PHONY : 	all clean fclean re
+a :			$(all)
+			$(clean)
+
+.PHONY : 	all clean fclean re a

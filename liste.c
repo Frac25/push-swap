@@ -47,17 +47,17 @@ nod	*free_all_node(nod *node)
 	return(NULL);
 }
 
-nod	*init_stack(int argc, char *argv[])
+nod	*init_stack(char *argv[], int size)
 {
 	int		i;
 	nod	*node_a;
 	nod	*node_a1;
 
-	node_a = add_node(NULL,ft_atoi(argv[argc - 1]));
+	node_a = add_node(NULL,ft_atoi(argv[size]));
 	if(node_a == NULL)
 		return(NULL);
 	node_a1 = node_a;
-	i = argc -2;;
+	i = size - 1;
 	while (i > 0)
 	{
 		node_a = add_node(node_a, ft_atoi(argv[i--]));
@@ -78,9 +78,10 @@ list	*init_list(nod *stack, int size)
 		return(NULL);
 	new_list->node_a = stack;
 	new_list->node_b = NULL;
-	new_list->dim_a = size; //verifier
+	new_list->dim_a = size;
 	new_list->dim_b = 0;
 	new_list->dis = 0;
+	printf("size = %d\n", size);
 	return(new_list);
 }
 

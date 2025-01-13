@@ -122,7 +122,7 @@ void	printa(list *l)
 		na = l->node_a;
 	if(l->node_b != NULL)
 		nb = l->node_b;
-	while(i <= l->dim_a)
+	while(i <= l->dim_a + 1)
 	{
 		if(na != NULL)
 		{
