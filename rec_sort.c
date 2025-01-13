@@ -109,8 +109,8 @@ int	rec_sort(list *l, tab *table)
 			n += split_b(l, table);
 		n += rec_sort(l, table->tp);
 		n += rec_sort(l, table->tm);
-//		free(table->tm);
-//		free(table->tp);
+		free(table->tm);
+		free(table->tp);
 	}
 	return (n);
 }

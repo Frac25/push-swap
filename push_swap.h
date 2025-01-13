@@ -48,16 +48,19 @@ typedef struct ta
 
 int		ft_atoi(const char *str);
 void	ft_putendl_fd(char *s, int fd);
+char	ft_strlast(const char *s);
+char	**ft_split(char const *s, char c);
 
 nod		*add_node(nod *node, int value);
+nod		*free_all_node(nod *node);
 list	*init_list(nod *stack, int size);
 tab		*init_tab(nod *location, int size);
 nod		*init_stack(char *argv[], int size);
 
+void 	error(void);
+
 int		sort(list *l, tab *table);
 int		rec_sort(list *l, tab *table);
-int		sort_123(list *l, tab *table);
-int		sort_3(list *l);
 int		split_a(list *l, tab *table);
 int		split_b(list *l, tab *table);
 

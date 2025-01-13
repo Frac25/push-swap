@@ -55,14 +55,17 @@ nod	*init_stack(char *argv[], int size)
 
 	node_a = add_node(NULL,ft_atoi(argv[size]));
 	if(node_a == NULL)
-		return(NULL);
+		error();
 	node_a1 = node_a;
 	i = size - 1;
 	while (i > 0)
 	{
 		node_a = add_node(node_a, ft_atoi(argv[i--]));
 		if(node_a == NULL)
-			return(free_all_node(node_a1));
+		{
+			free_all_node(node_a1);
+			error();
+		}
 	}
 	node_a->prev = node_a1;
 	node_a1->next = node_a;
@@ -75,13 +78,15 @@ list	*init_list(nod *stack, int size)
 
 	new_list = malloc(sizeof(list));
 	if(new_list == NULL)
+	{
+		free(new_list);
 		return(NULL);
+	}
 	new_list->node_a = stack;
 	new_list->node_b = NULL;
 	new_list->dim_a = size;
 	new_list->dim_b = 0;
 	new_list->dis = 0;
-	printf("size = %d\n", size);
 	return(new_list);
 }
 

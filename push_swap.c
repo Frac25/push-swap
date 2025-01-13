@@ -1,56 +1,35 @@
 #include"push_swap.h"
 
-int check_param(int argc, char **argv)
+char **check_param(char **argv, int argc)
 {
-	int	i;
-	int j;
+	int		i;
+	int		j;
+	char	**argv2;
+
+	argv2 = argv;
+	if(argc == 2)
+	{
+		argv2 = ft_split(argv[1], ' ');
+	}
 
 	i = 1;
 	while (i <= argc -1)
 	{
 		j = 0;
-		if (argv[i][0] == '+' || argv[i][0] == '-')
+		if (argv2[i][0] == '+' || argv2[i][0] == '-')
 			j++;
-		if (argv[i][j] < '0' || argv[i][j] > '9')
-			return(0);
+		if (argv2[i][j] < '0' || argv2[i][j] > '9')
+			error();
 		j++;
-		while(argv[i][j] != '\0')
+		while(argv2[i][j] != '\0')
 		{
-			if (argv[i][j] < '0' || argv[i][j] > '9')
-				return (0);
+			if (argv2[i][j] < '0' || argv2[i][j] > '9')
+				error();
 			j++;
 		}
 		i++;
 	}
-	return(1);
-}
-
-int	check_dup(list *l)
-{
-	int i;
-	int j;
-	int n;
-	nod	*node_i;
-	nod	*node_j;
-
-	node_i = l->node_a;
-	node_j = l->node_a;
-	i = 0;
-	n = 0;
-	while (i < l->dim_a)
-	{
-		j = 0;
-		while (j < l->dim_a)
-		{
-			if (node_i != node_j && node_i->value == node_j->value)
-				n++;
-			j++;
-			node_j = node_j->next;
-		}
-		node_i = node_i->next;
-		i++;
-	}
-	return (n);
+	return(argv2);
 }
 
 void error(void)
@@ -65,30 +44,44 @@ int	main(int argc, char *argv[])
 	list	*l;
 	nod		*stack_a;
 	tab		*table;
+	char	**param;
 
 	n = 0;
+	param = NULL;
 	if (argc <= 1)
 		return(0);
-	if(check_param(argc, argv) == 0)
-		error();
-	stack_a = init_stack(argv, argc - 1);
-	if (stack_a == NULL)
-		error();
+
+		printf("argv[0][0] = %c\n", argv[0][0]);
+		printf("argv[0][1] = %c\n", argv[0][1]);
+		printf("argv[1][0] = %c\n", argv[1][0]);
+		printf("argv[1][1] = %c\n", argv[1][1]);
+		printf("argv[1][2] = %c\n", argv[1][2]);
+
+
+	param = check_param(argv, argc);
+
+
+		printf("param[0][0] = %c\n", param[0][0]);
+		printf("param[0][1] = %c\n", param[0][1]);
+		printf("param[1][0] = %c\n", param[1][0]);
+		printf("param[1][1] = %c\n", param[1][1]);
+		printf("param[1][2] = %c\n", param[1][2]);
+
+	stack_a = init_stack(param, argc - 1);
 	l = init_list(stack_a, argc - 1);
 	if (l == NULL)
+	{
+		free_all_node(stack_a);
 		error();
-	if(check_dup(l) != 0)
-		error();
+	}
 	table = init_tab(l->node_a, (argc - 1));
 	if (table == NULL)
+	{
+		free_all_node(stack_a);
+		free(l);
 		error();
-//	printa(l);
-	if (ever_sorted(l) == 1)
-		return(0);
-	if (argc == 4)
-		n = sort_3(l);
-	else
-		n = sort(l, table);
+	}
+	n = sort(l, table);
 	tester(l);
 	printf("n = %d\n", n);
 	return(1);

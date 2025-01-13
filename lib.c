@@ -33,3 +33,17 @@ void	ft_putendl_fd(char *s, int fd)
 	write(fd, s, ft_strlen(s));
 	write(fd, "\n", 1);
 }
+
+char	ft_strlast(const char *s)
+{
+	size_t	i;
+	char	c;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		c = s[i];
+		i++;
+	}
+	return (c);
+}

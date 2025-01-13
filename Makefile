@@ -12,6 +12,7 @@ PROG =	ft_printf\
 		split_pos\
 		test\
 		sort\
+		ft_split2\
 
 SRC = $(addsuffix .c, $(PROG))
 
@@ -38,7 +39,6 @@ fclean : 	clean
 
 re : 		fclean all
 
-a :			$(all)
-			$(clean)
+a :			all clean
 
 .PHONY : 	all clean fclean re a
