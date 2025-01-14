@@ -50,6 +50,11 @@ int		ft_atoi(const char *str);
 void	ft_putendl_fd(char *s, int fd);
 char	ft_strlast(const char *s);
 char	**ft_split(char const *s, char c);
+char	*ft_strjoin(char const *s1, char const *s2);
+
+int		check_argc(char **argv);
+char	**check_param(char **argv, int argc);
+int		check_dup(list *l);
 
 nod		*add_node(nod *node, int value);
 nod		*free_all_node(nod *node);
@@ -60,7 +65,9 @@ nod		*init_stack(char *argv[], int size);
 void 	error(void);
 
 int		sort(list *l, tab *table);
+
 int		rec_sort(list *l, tab *table);
+
 int		split_a(list *l, tab *table);
 int		split_b(list *l, tab *table);
 
@@ -78,5 +85,5 @@ int		rrr(list *l);
 
 int		test_i(list *stack);
 void	printa(list *l);
+void	print_double_char(char **argv);
 void	tester(list *l);
-int		ever_sorted(list *l);

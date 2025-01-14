@@ -1,31 +1,21 @@
 #include"push_swap.h"
 
-int	check_dup(list *l)
+int	ever_sorted(list *l)
 {
-	int i;
-	int j;
-	int n;
-	nod	*node_i;
-	nod	*node_j;
+	nod	*nt;
+	int	i;
 
-	node_i = l->node_a;
-	node_j = l->node_a;
+	nt = l->node_a;
 	i = 0;
-	n = 0;
-	while (i < l->dim_a)
+	while (nt != l->node_a->prev)
 	{
-		j = 0;
-		while (j < l->dim_a)
-		{
-			if (node_i != node_j && node_i->value == node_j->value)
-				n++;
-			j++;
-			node_j = node_j->next;
-		}
-		node_i = node_i->next;
-		i++;
+		if (nt->value < nt->next->value)
+			i++;
+		else
+			return(0);
+		nt = nt->next;
 	}
-	return (n);
+	return (1);
 }
 
 void	discret(list *l)

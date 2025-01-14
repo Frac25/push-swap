@@ -1,7 +1,9 @@
 NAME = push_swap
 
-PROG =	ft_printf\
+PROG =	check\
+		ft_printf\
 		ft_printnb\
+		ft_split2\
 		instruction1\
 		instruction2\
 		instruction3\
@@ -10,9 +12,8 @@ PROG =	ft_printf\
 		push_swap\
 		rec_sort\
 		split_pos\
-		test\
 		sort\
-		ft_split2\
+		test\
 
 SRC = $(addsuffix .c, $(PROG))
 

@@ -171,20 +171,23 @@ void	tester(list *l)
 
 }
 
-int	ever_sorted(list *l)
+void print_double_char(char **argv)
 {
-	nod	*nt;
-	int	i;
+	int i;
+	int j;
 
-	nt = l->node_a;
 	i = 0;
-	while (nt != l->node_a->prev)
+	while (argv[i])
 	{
-		if (nt->value < nt->next->value)
-			i++;
-		else
-			return(0);
-		nt = nt->next;
+		j = 0;
+		while(argv[i][j])
+		{
+			printf("argv[%d][%d] = %c\n", i, j, argv[i][j]);
+			j++;
+		}
+		i++;
 	}
-	return (1);
+	printf("\n");
 }
+
+

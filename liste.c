@@ -53,12 +53,12 @@ nod	*init_stack(char *argv[], int size)
 	nod	*node_a;
 	nod	*node_a1;
 
-	node_a = add_node(NULL,ft_atoi(argv[size]));
+	node_a = add_node(NULL,ft_atoi(argv[size - 1]));
 	if(node_a == NULL)
 		error();
 	node_a1 = node_a;
-	i = size - 1;
-	while (i > 0)
+	i = size - 2;
+	while (i >= 0)
 	{
 		node_a = add_node(node_a, ft_atoi(argv[i--]));
 		if(node_a == NULL)
