@@ -90,7 +90,11 @@ char **check_param(char **argv, int argc)
 {
 	argv = &argv[1];
 	if(argc == 2)
+	{
+		if (!argv[1])
+			error();
 		argv = ft_split(argv[0], ' ');
+	}
 	check_char(argv);
 	check_max(argv);
 	check_dup(argv);
