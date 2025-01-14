@@ -101,8 +101,6 @@ int	sort(list *l, tab *table)
 {
 	int	n;
 
-	if(check_dup(l) != 0)
-		error();
 	if (ever_sorted(l) == 1)
 		exit(EXIT_SUCCESS);
 	discret(l);

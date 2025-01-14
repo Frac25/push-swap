@@ -16,7 +16,7 @@ int	main(int argc, char *argv[])
 	if (argc <= 1)
 		return(0);
 	argv = check_param(argv, argc);
-	argc = check_argc(argv);
+	argc = strlen_2(argv);
 	stack_a = init_stack(argv, argc);
 	l = init_list(stack_a, argc);
 	if (l == NULL)

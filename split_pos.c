@@ -27,7 +27,6 @@ int	split_a(list *l, tab *table)
 	table->tp->position = u_b;
 	table->tm->position = d_b;
 	return (n);
-//	printf("tp.pos = %u , tp.loc = %d , tp.size = %d, tm.loc = %d , tm.size = %d \n", tp.position, tp.location->index, tp.size, tm.location->index, tm.size);
 }
 
 int	split_b(list *l, tab *table)
@@ -57,5 +56,4 @@ int	split_b(list *l, tab *table)
 	table->tp->position = u_a;
 	table->tm->position = d_a;
 	return (n);
-//	printf("tp.pos = %u , tp.loc = %d , tp.size = %d, tm.loc = %d , tm.size = %d \n", tp.position, tp.location->index, tp.size, tm.location->index, tm.size);
 }

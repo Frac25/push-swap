@@ -48,13 +48,11 @@ typedef struct ta
 
 int		ft_atoi(const char *str);
 void	ft_putendl_fd(char *s, int fd);
-char	ft_strlast(const char *s);
 char	**ft_split(char const *s, char c);
 char	*ft_strjoin(char const *s1, char const *s2);
 
-int		check_argc(char **argv);
+int		strlen_2(char **argv);
 char	**check_param(char **argv, int argc);
-int		check_dup(list *l);
 
 nod		*add_node(nod *node, int value);
 nod		*free_all_node(nod *node);
