@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:36:17 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/15 10:38:27 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/15 16:24:21 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	check_max(char **str)
 		s = 1;
 		a = 0;
 		j = 0;
-		while (str[i][j] == ' ' || (str[i][j] >= 9 && str[i][j] <= 13))
+		while (str[i][j] == ' ' || (str[i][j] >= 9 && str[i][j] <= 13))//verifier
 			j++;
 		if (str[i][j] == '+' || str[i][j] == '-')
 		{
@@ -96,6 +96,8 @@ void	check_dup(char **str)
 
 char	**check_param(char **argv, int argc)
 {
+	if (argc == 2 && argv[1][0] == '\0')
+		error();
 	argv = &argv[1];
 	if (argc == 2)
 		argv = ft_split(argv[0], ' ');

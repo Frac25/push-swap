@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:40:44 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/15 11:40:33 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/15 17:11:31 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	error(void);
 int		sort(t_list *l, t_tab *table);
 
 int		rec_sort(t_list *l, t_tab *table);
+void	discret(t_list *l);
 
 int		split_a(t_list *l, t_tab *table);
 int		split_b(t_list *l, t_tab *table);

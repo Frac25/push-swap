@@ -15,7 +15,7 @@ PROG =	check\
 		rec_sort\
 		split_pos\
 		sort\
-#		div/test\
+		test\
 
 SRC = $(addsuffix .c, $(PROG))
 
@@ -25,14 +25,18 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
+LDFLAGS =  -fsanitize=address
+
 all :		$(NAME)
 
 $(NAME) :	$(OBJ)
 #			ar rcs $(NAME) $(OBJ)
 			$(CC) $(OBJ) -o $(NAME)
+#			$(CC) $(OBJ) -o $(NAME) $(LDFLAGS)
 
 %.o :		%.c
-			$(CC) -c $< $(CFLAGS) -o $@
+#			$(CC) -c $< $(CFLAGS) -o $@
+			$(CC) $(CFLAGS) -c $< -o $@
 
 clean :
 			rm -f $(OBJ)

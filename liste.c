@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:34:45 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/15 11:44:15 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/15 15:51:52 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,18 @@ t_nod	*add_node(t_nod *n, int value)
 t_nod	*free_all_node(t_nod *node)
 {
 	t_nod	*next_node;
+	t_nod	*last_node;
 
 	if (node == NULL)
 		return (NULL);
-	while (node != NULL)
+	last_node = node->prev;
+	while (node != last_node)
 	{
-		if (node != node->next)
-		{
-			next_node = node->next;
-			free(node);
-			node = next_node;
-		}
-		else
-			free(node);
+		next_node = node->next;
+		free(node);
+		node = next_node;
 	}
+	free(node);
 	return (NULL);
 }
 
@@ -91,8 +89,9 @@ t_list	*init_list(t_nod *stack, int size)
 	new_list = malloc(sizeof(t_list));
 	if (new_list == NULL)
 	{
+		free_all_node(stack);
 		free(new_list);
-		return (NULL);
+		error();
 	}
 	new_list->node_a = stack;
 	new_list->node_b = NULL;

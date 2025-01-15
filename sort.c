@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:17:24 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/15 11:46:44 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/15 17:14:28 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,31 +28,6 @@ int	ever_sorted(t_list *l)
 		nt = nt->next;
 	}
 	return (1);
-}
-
-void	discret(t_list *l)
-{
-	int		j;
-	int		rank;
-	t_nod	*node_i;
-	t_nod	*node_j;
-
-	node_i = l->node_a;
-	node_j = l->node_a;
-	while (node_i->discret == 0)
-	{
-		rank = 0;
-		j = 0;
-		while (j < l->dim_a)
-		{
-			if (node_i->value >= node_j->value)
-				rank++;
-			j++;
-			node_j = node_j->next;
-		}
-		node_i->discret = rank;
-		node_i = node_i->next;
-	}
 }
 
 int	sort_3(t_list *l)
@@ -83,6 +58,26 @@ int	sort_3(t_list *l)
 	return (n);
 }
 
+int	sort_5(t_list *l)
+{
+	int	n;
+
+	n = 0;
+	while (l->dim_a > 3)
+	{
+		if (l->node_a->discret < 3)
+			n += pb(l);
+		else
+			n += ra(l);
+	}
+	if (l->node_b->discret < l->node_b->next->discret)
+		n += sb(l);
+	sort_3(l);
+	while (l->dim_b > 0)
+		n += pa(l);
+	return (n);
+}
+
 int	sort_1to5(t_list *l)
 {
 	int	n;
@@ -92,21 +87,20 @@ int	sort_1to5(t_list *l)
 		n += sa(l);
 	else if (l->dim_a == 3)
 		n += sort_3(l);
-	else if (l->dim_a == 4 || l->dim_a == 5)
+	else if (l->dim_a == 4)
 	{
 		while (l->dim_a > 3)
 		{
-			if (l->node_a->discret < 3)
+			if (l->node_a->discret == 1)
 				n += pb(l);
 			else
 				n += ra(l);
 		}
-		if (l->node_b->discret < l->node_b->next->discret)
-			n += sb(l);
 		sort_3(l);
-		while (l->dim_b > 0)
-			n += pa(l);
+		n += pa(l);
 	}
+	else if (l->dim_a == 5)
+		n += sort_5(l);
 	return (n);
 }
 
@@ -114,6 +108,7 @@ int	sort(t_list *l, t_tab *table)
 {
 	int	n;
 
+	n = 0;
 	if (ever_sorted(l) == 1)
 		exit(EXIT_SUCCESS);
 	discret(l);

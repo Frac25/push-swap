@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:28:29 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/15 11:31:44 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/15 15:38:37 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,3 +164,48 @@ void	print_double_char(char **argv)
 	}
 	printf("\n");
 }
+
+/*
+t_nod	*find_p(t_list *l, t_tab *table)
+{
+	if(table->position == u_a)
+		return(l->node_a);
+	if(table->position == u_b)
+		return(l->node_b);
+	if(table->position == d_a)
+		return(l->node_a->prev);
+	if(table->position == d_b)
+		return(l->node_b->prev);
+	return(NULL);
+}
+
+t_nod	*free_all_node(t_nod *node)
+{
+	t_nod	*next_node;
+	t_nod	*initial_node;
+	int	i;
+	int	n;
+
+	if (node == NULL)
+		return (NULL);
+	n = 1;
+	initial_node = node;
+	while (node->next != initial_node)
+	{
+		n++;
+		node = node->next;
+	}
+	i = 0;
+	while (i < n)
+	{
+		next_node = node->next;
+		free(node);
+		node = next_node;
+		i++;
+	}
+	return (NULL);
+}
+
+
+
+*/

@@ -6,11 +6,36 @@
 /*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:04:12 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/15 12:12:48 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/15 17:11:15 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
+
+void	discret(t_list *l)
+{
+	int		j;
+	int		rank;
+	t_nod	*node_i;
+	t_nod	*node_j;
+
+	node_i = l->node_a;
+	node_j = l->node_a;
+	while (node_i->discret == 0)
+	{
+		rank = 0;
+		j = 0;
+		while (j < l->dim_a)
+		{
+			if (node_i->value >= node_j->value)
+				rank++;
+			j++;
+			node_j = node_j->next;
+		}
+		node_i->discret = rank;
+		node_i = node_i->next;
+	}
+}
 
 t_nod	*p_moyen(t_tab *table)
 {

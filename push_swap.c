@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:38:54 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/15 12:13:42 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/15 17:16:05 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,24 @@ int	main(int argc, char *argv[])
 	t_nod	*stack_a;
 	t_tab	*table;
 
-	if (argc <= 1 || (argc == 2 && argv[1][0] == '\0'))
+	if (argc <= 1)
 		return (0);
 	argv = check_param(argv, argc);
 	argc = strlen_2(argv);
 	stack_a = init_stack(argv, argc);
 	l = init_list(stack_a, argc);
-	if (l == NULL)
-	{
-		free_all_node(stack_a);
-		error();
-	}
 	table = init_tab(l->node_a, argc);
 	if (table == NULL)
 	{
 		free_all_node(stack_a);
 		free(l);
+		free(table);
 		error();
 	}
 	n = sort(l, table);
+	free_all_node(stack_a);
+	free(l);
+	free(table);
 	return (1);
 }
 
