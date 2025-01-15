@@ -1,50 +1,59 @@
-//#ifndef PUSH_SWAP_H
-//# define PUSH_SWAP_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/15 10:40:44 by sydubois          #+#    #+#             */
+/*   Updated: 2025/01/15 11:40:33 by sydubois         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include<stdio.h>
-#include<unistd.h>
-#include<stdlib.h>
-#include<string.h>
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-#include"ft_printf.h"
+# include<stdio.h>
+# include<unistd.h>
+# include<stdlib.h>
+# include<string.h>
+# include"ft_printf.h"
 
-typedef enum po
+typedef enum pos
 {
 	u_a,
 	d_a,
 	u_b,
 	d_b,
-} pos;
+}	t_pos;
 
-typedef struct no
+typedef struct nod
 {
-	struct no	*next;
-	struct no	*prev;
+	struct nod	*next;
+	struct nod	*prev;
 	int			index;
 	int			value;
 	int			value_init;
 	int			discret;
-} nod;
+}	t_nod;
 
-typedef struct lis
+typedef struct list
 {
-	nod	*node_a;
-	nod	*node_b;
-	int	dim_a;
-	int	dim_b;
-	int	dis;
-} list;
+	t_nod	*node_a;
+	t_nod	*node_b;
+	int		dim_a;
+	int		dim_b;
+}	t_list;
 
-typedef struct ta
+typedef struct tab
 {
-	nod			*location;
+	t_nod		*location;
 	int			size;
-	pos			position;
-	nod			*pivot;
-	struct ta	*tp;
-	struct ta	*tm;
-} tab;
-
+	t_pos		position;
+	t_nod		*pivot;
+	struct tab	*tp;
+	struct tab	*tm;
+}	t_tab;
 
 int		ft_atoi(const char *str);
 void	ft_putendl_fd(char *s, int fd);
@@ -54,34 +63,36 @@ char	*ft_strjoin(char const *s1, char const *s2);
 int		strlen_2(char **argv);
 char	**check_param(char **argv, int argc);
 
-nod		*add_node(nod *node, int value);
-nod		*free_all_node(nod *node);
-list	*init_list(nod *stack, int size);
-tab		*init_tab(nod *location, int size);
-nod		*init_stack(char *argv[], int size);
+t_nod	*add_node(t_nod *node, int value);
+t_nod	*free_all_node(t_nod *node);
+t_list	*init_list(t_nod *stack, int size);
+t_tab	*init_tab(t_nod *location, int size);
+t_nod	*init_stack(char *argv[], int size);
 
-void 	error(void);
+void	error(void);
 
-int		sort(list *l, tab *table);
+int		sort(t_list *l, t_tab *table);
 
-int		rec_sort(list *l, tab *table);
+int		rec_sort(t_list *l, t_tab *table);
 
-int		split_a(list *l, tab *table);
-int		split_b(list *l, tab *table);
+int		split_a(t_list *l, t_tab *table);
+int		split_b(t_list *l, t_tab *table);
 
-int		sa(list *l);
-int		sb(list *l);
-int		ss(list *l);
-int		pa(list *l);
-int		pb(list *l);
-int		ra(list *l);
-int		rb(list *l);
-int		rr(list *l);
-int		rra(list *l);
-int		rrb(list *l);
-int		rrr(list *l);
+int		sa(t_list *l);
+int		sb(t_list *l);
+int		ss(t_list *l);
+int		pa(t_list *l);
+int		pb(t_list *l);
+int		ra(t_list *l);
+int		rb(t_list *l);
+int		rr(t_list *l);
+int		rra(t_list *l);
+int		rrb(t_list *l);
+int		rrr(t_list *l);
 
-int		test_i(list *stack);
-void	printa(list *l);
+int		test_i(t_list *stack);
+void	printa(t_list *l);
 void	print_double_char(char **argv);
-void	tester(list *l);
+void	tester(t_list *l);
+
+#endif

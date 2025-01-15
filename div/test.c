@@ -1,130 +1,107 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/15 11:28:29 by sydubois          #+#    #+#             */
+/*   Updated: 2025/01/15 11:31:44 by sydubois         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include"push_swap.h"
 
-//https://github.com/ulyssegerkens/push_swap/tree/main
-
-int	test_i(list *stack)
+int	test_i(t_list *stack)
 {
 	printa(stack);
-
 	sa(stack);
 	printa(stack);
-
 	sa(stack);
 	printa(stack);
-
 	ra(stack);
 	printa(stack);
-
 	ra(stack);
 	printa(stack);
-
 	rra(stack);
 	printa(stack);
-
 	rra(stack);
 	printa(stack);
-
 	pb(stack);
 	printa(stack);
-
 	pb(stack);
 	printa(stack);
-
 	pb(stack);
 	printa(stack);
-
 	pb(stack);
 	printa(stack);
-
 	pb(stack);
 	printa(stack);
-
 	pb(stack);
 	printa(stack);
-
 	pb(stack);
 	printa(stack);
-
 	pb(stack);
 	printa(stack);
-
 	pb(stack);
 	printa(stack);
-
 	pa(stack);
 	printa(stack);
-
 	pa(stack);
 	printa(stack);
-
 	pa(stack);
 	printa(stack);
-
 	pa(stack);
 	printa(stack);
-
 	pa(stack);
 	printa(stack);
-
 	pa(stack);
 	printa(stack);
-
 	pa(stack);
 	printa(stack);
-
 	pa(stack);
 	printa(stack);
-
 	pa(stack);
 	printa(stack);
-
 	pa(stack);
 	printa(stack);
-
 	pb(stack);
 	printa(stack);
-
 	pb(stack);
 	printa(stack);
-
 	pb(stack);
 	printa(stack);
-
 	pb(stack);
 	printa(stack);
-
 	ss(stack);
 	printa(stack);
-
 	rr(stack);
 	printa(stack);
-
 	rra(stack);
 	printa(stack);
-
 	rrb(stack);
 	printa(stack);
-
 	rrr(stack);
 	printa(stack);
-
-	return(0);
+	return (0);
 }
 
-void	printa(list *l)
+void	printa(t_list *l)
 {
-	nod *na = NULL;
-	nod *nb = NULL;
-	int	i;
+	t_nod	*na;
+	t_nod	*nb;
+	int		i;
 
+	na = NULL;
+	nb = NULL;
 	i = 0;
-	if(l->node_a != NULL)
+	if (l->node_a != NULL)
 		na = l->node_a;
-	if(l->node_b != NULL)
+	if (l->node_b != NULL)
 		nb = l->node_b;
-	while(i <= l->dim_a + 1)
+	while (i <= l->dim_a + 1)
 	{
-		if(na != NULL)
+		if (na != NULL)
 		{
 			printf("ai : %d     ", na->index);
 			printf("p : %d     ", na->prev->value);
@@ -132,7 +109,7 @@ void	printa(list *l)
 			printf("n : %d               ", na->next->value);
 			printf("d : %d               ", na->discret);
 		}
-		if(nb != NULL)
+		if (nb != NULL)
 		{
 			printf("bi : %d     ", nb->index);
 			printf("p : %d     ", (nb->prev)->value);
@@ -141,20 +118,19 @@ void	printa(list *l)
 		}
 		else
 			printf("\n");
-		if(na != NULL)
+		if (na != NULL)
 			na = na->next;
-		if(nb != NULL)
+		if (nb != NULL)
 			nb = nb->next;
 		i++;
 	}
-
 	printf("\n");
 }
 
-void	tester(list *l)
+void	tester(t_list *l)
 {
-	nod	*nt;
-	int	i;
+	t_nod	*nt;
+	int		i;
 
 	printa(l);
 	nt = l->node_a;
@@ -168,19 +144,18 @@ void	tester(list *l)
 		nt = nt->next;
 	}
 	printf("si pas de KO, c'est OK!\n");
-
 }
 
-void print_double_char(char **argv)
+void	print_double_char(char **argv)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (argv[i])
 	{
 		j = 0;
-		while(argv[i][j])
+		while (argv[i][j])
 		{
 			printf("argv[%d][%d] = %c\n", i, j, argv[i][j]);
 			j++;
@@ -189,5 +164,3 @@ void print_double_char(char **argv)
 	}
 	printf("\n");
 }
-
-

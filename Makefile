@@ -7,13 +7,15 @@ PROG =	check\
 		instruction1\
 		instruction2\
 		instruction3\
+		instruction4\
+		instruction5\
 		lib\
 		liste\
 		push_swap\
 		rec_sort\
 		split_pos\
 		sort\
-		test\
+#		div/test\
 
 SRC = $(addsuffix .c, $(PROG))
 

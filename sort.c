@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/15 11:17:24 by sydubois          #+#    #+#             */
+/*   Updated: 2025/01/15 11:46:44 by sydubois         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include"push_swap.h"
 
-int	ever_sorted(list *l)
+int	ever_sorted(t_list *l)
 {
-	nod	*nt;
-	int	i;
+	t_nod	*nt;
+	int		i;
 
 	nt = l->node_a;
 	i = 0;
@@ -12,18 +24,18 @@ int	ever_sorted(list *l)
 		if (nt->value < nt->next->value)
 			i++;
 		else
-			return(0);
+			return (0);
 		nt = nt->next;
 	}
 	return (1);
 }
 
-void	discret(list *l)
+void	discret(t_list *l)
 {
-	int j;
-	int rank;
-	nod	*node_i;
-	nod	*node_j;
+	int		j;
+	int		rank;
+	t_nod	*node_i;
+	t_nod	*node_j;
 
 	node_i = l->node_a;
 	node_j = l->node_a;
@@ -41,10 +53,9 @@ void	discret(list *l)
 		node_i->discret = rank;
 		node_i = node_i->next;
 	}
-	l->dis = 1;
 }
 
-int	sort_3(list *l)
+int	sort_3(t_list *l)
 {
 	int	n;
 	int	a;
@@ -72,9 +83,9 @@ int	sort_3(list *l)
 	return (n);
 }
 
-int	sort_1to5(list *l)
+int	sort_1to5(t_list *l)
 {
-	int n;
+	int	n;
 
 	n = 0;
 	if (l->dim_a == 2 && (l->node_a->value > l->node_a->next->value))
@@ -84,10 +95,12 @@ int	sort_1to5(list *l)
 	else if (l->dim_a == 4 || l->dim_a == 5)
 	{
 		while (l->dim_a > 3)
+		{
 			if (l->node_a->discret < 3)
 				n += pb(l);
 			else
 				n += ra(l);
+		}
 		if (l->node_b->discret < l->node_b->next->discret)
 			n += sb(l);
 		sort_3(l);
@@ -97,7 +110,7 @@ int	sort_1to5(list *l)
 	return (n);
 }
 
-int	sort(list *l, tab *table)
+int	sort(t_list *l, t_tab *table)
 {
 	int	n;
 
