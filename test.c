@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:28:29 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/15 15:38:37 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/16 10:29:47 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,7 @@ void	print_double_char(char **argv)
 		j = 0;
 		while (argv[i][j])
 		{
-			printf("argv[%d][%d] = %c\n", i, j, argv[i][j]);
+			printf("[%d][%d] = %c\n", i, j, argv[i][j]);
 			j++;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:34:45 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/15 15:51:52 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/16 10:00:28 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,14 @@ t_nod	*free_all_node(t_nod *node)
 	return (NULL);
 }
 
-t_nod	*init_stack(char *argv[], int size)
+t_nod	*init_stack(char *argv[])
 {
 	int		i;
 	t_nod	*node_a;
 	t_nod	*node_a1;
+	int		size;
 
+	size = strlen_2(argv);
 	node_a = add_node(NULL, ft_atoi(argv[size - 1]));
 	if (node_a == NULL)
 		error();

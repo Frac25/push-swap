@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:40:44 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/15 17:11:31 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/16 09:59:46 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ t_nod	*add_node(t_nod *node, int value);
 t_nod	*free_all_node(t_nod *node);
 t_list	*init_list(t_nod *stack, int size);
 t_tab	*init_tab(t_nod *location, int size);
-t_nod	*init_stack(char *argv[], int size);
+t_nod	*init_stack(char **argv);
 
 void	error(void);
 

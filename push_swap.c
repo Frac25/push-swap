@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:38:54 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/15 17:16:05 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/16 10:28:18 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,49 @@ void	error(void)
 	exit(EXIT_FAILURE);
 }
 
+void	free_char2(char **c)
+{
+	int	i;
+
+	if (c == NULL)
+		exit(EXIT_SUCCESS);
+	i = strlen_2(c) -1;
+	while (i >= 0)
+		free(c[i--]);
+	free(c);
+}
+
 int	main(int argc, char *argv[])
 {
 	int		n;
 	t_list	*l;
 	t_nod	*stack_a;
 	t_tab	*table;
+	char	**param;
 
 	if (argc <= 1)
 		return (0);
-	argv = check_param(argv, argc);
-	argc = strlen_2(argv);
-	stack_a = init_stack(argv, argc);
-	l = init_list(stack_a, argc);
-	table = init_tab(l->node_a, argc);
+	param = check_param(argv, argc);
+	stack_a = init_stack(param);
+	l = init_list(stack_a, strlen_2(param));
+	table = init_tab(l->node_a, l->dim_a);
+
+	n = sort(l, table);
+	free_all_node(stack_a);
+	free(l);
+	free(table);
+	free_char2(param);
+//	free(param);
+//	free(argv[0]);
+	return (1);
+}
+
+/*
+	tester(l);
+	printf("n = %d\n", n);
+*/
+
+/*
 	if (table == NULL)
 	{
 		free_all_node(stack_a);
@@ -39,14 +68,4 @@ int	main(int argc, char *argv[])
 		free(table);
 		error();
 	}
-	n = sort(l, table);
-	free_all_node(stack_a);
-	free(l);
-	free(table);
-	return (1);
-}
-
-/*
-	tester(l);
-	printf("n = %d\n", n);
 */
