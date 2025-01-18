@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:38:54 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/16 10:28:18 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/18 13:34:14 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,23 @@ int	main(int argc, char *argv[])
 	char	**param;
 
 	if (argc <= 1)
-		return (0);
+		return (1);
 	param = check_param(argv, argc);
 	stack_a = init_stack(param);
 	l = init_list(stack_a, strlen_2(param));
 	table = init_tab(l->node_a, l->dim_a);
 
 	n = sort(l, table);
+
+//	tester(l);
+//	printf("n = %d\n", n);
+
 	free_all_node(stack_a);
 	free(l);
 	free(table);
 	free_char2(param);
-//	free(param);
-//	free(argv[0]);
-	return (1);
+
+	return (0);
 }
 
 /*

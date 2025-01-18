@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lib.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:33:05 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/15 11:33:10 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/18 13:19:16 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,14 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (c);
 	}
 	return (NULL);
+}
+
+int	ft_strlen_int(const char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }

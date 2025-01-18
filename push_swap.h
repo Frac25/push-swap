@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:40:44 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/16 09:59:46 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/18 13:19:37 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int		ft_atoi(const char *str);
 void	ft_putendl_fd(char *s, int fd);
 char	**ft_split(char const *s, char c);
 char	*ft_strjoin(char const *s1, char const *s2);
+int		ft_strlen_int(const char *s);
 
 int		strlen_2(char **argv);
 char	**check_param(char **argv, int argc);
