@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   instruction3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:00:27 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/15 11:59:44 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:48:44 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	sa(t_list *l)
 	l->node_a->prev = node_tmp;
 	node_tmp->next = l->node_a;
 	l->node_a = node_tmp;
-	ft_printf("sa\n");
+	reg(l, "sa", SA);
 	return (1);
 }
 
@@ -40,7 +40,7 @@ int	sb(t_list *l)
 	l->node_b->prev = node_tmp;
 	node_tmp->next = l->node_b;
 	l->node_b = node_tmp;
-	ft_printf("sb\n");
+	reg(l, "sb", SB);
 	return (1);
 }
 
@@ -64,6 +64,6 @@ int	ss(t_list *l)
 	l->node_b->prev = node_tmp;
 	node_tmp->next = l->node_b;
 	l->node_b = node_tmp;
-	ft_printf("ss\n");
+	reg(l, "ss", SS);
 	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   liste.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:34:45 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/16 10:00:28 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/23 17:27:45 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,10 @@ t_list	*init_list(t_nod *stack, int size)
 	new_list->node_b = NULL;
 	new_list->dim_a = size;
 	new_list->dim_b = 0;
+	new_list->p = 1;
+	new_list->i = 0;
+	new_list->ins = malloc(sizeof(t_ins) * 100000);
+
 	return (new_list);
 }
 

@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:38:54 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/18 13:34:14 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/23 17:24:45 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int	main(int argc, char *argv[])
 
 //	tester(l);
 //	printf("n = %d\n", n);
+
+
 
 	free_all_node(stack_a);
 	free(l);

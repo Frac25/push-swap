@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rec_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:04:12 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/15 17:11:15 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/23 17:25:34 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,28 +37,23 @@ void	discret(t_list *l)
 	}
 }
 
-t_nod	*p_moyen(t_tab *table)
+void	pivot_2(t_tab *table)
 {
-	int		i;
-	int		somme_p;
-	int		valeur_p;
 	t_nod	*location_t;
 
-	i = 0;
-	somme_p = 0;
 	location_t = table->location;
-	while (i < table->size)
-	{
-		somme_p += location_t->discret;
+
+	while (location_t->discret != table->size / 3)
 		location_t = location_t->next;
-		i++;
-	}
-	valeur_p = (somme_p / i);
-	location_t = table->location;
-	while (location_t->discret != valeur_p)
+	table->pivot = location_t;
+	while (location_t->discret != table->size * 2 / 3)
 		location_t = location_t->next;
-	return (location_t);
+	table->pivot_2 = location_t;
+
+//	printf("p1 = %d et p2 = %d\n", table->pivot->discret, table->pivot_2->discret);
 }
+
+
 
 int	to_top_a(t_list *l, t_tab *table)
 {
@@ -84,6 +79,7 @@ int	to_top_a(t_list *l, t_tab *table)
 	{
 		while (i++ < table->size)
 			n += pa(l);
+
 	}
 	return (n);
 }
@@ -98,32 +94,42 @@ int	sort_r3(t_list *l, t_tab *table)
 	if (table->size == 3)
 	{
 		if (l->node_a->next->value > l->node_a->next->next->value)
-		{
-			n += ra(l);
-			n += sa(l);
-			n += rra(l);
-		}
+			n += ra(l) + sa(l) + rra(l);
 		if (l->node_a->value > l->node_a->next->value)
 			n += sa(l);
 	}
 	return (n);
 }
 
+
 int	rec_sort(t_list *l, t_tab *table)
 {
 	int	n;
 
 	n = 0;
+
 	if (table->size <= 3)
 	{
-		n += to_top_a(l, table);
-		n += sort_r3(l, table);
+
+//		if (table->position == u_b && table->size == 3)
+//			n += sort_ub_r3(l);
+//		else if (table->position == d_b && table->size == 3)
+//			n += sort_db_r3(l);
+//		else if (table->position == d_a && table->size == 3)
+//			n += sort_da_r3(l);
+//		else
+			n += to_top_a(l, table) + sort_r3(l, table);
+//		printf("TRI : position = %u  size = %d n = %d\n", table->position, table->size, n);
 	}
 	else
 	{
+//printf("SPLIT position = %u  size = %d\n", table->position, table->size);
 		table->tm = init_tab(NULL, 0);
 		table->tp = init_tab(NULL, 0);
+//		table->t3 = init_tab(NULL, 0);
 		table->pivot = p_moyen(table);
+//		pivot_2(table);
+
 		if (table->position == u_a || table->position == d_a)
 			n += split_a(l, table);
 		else
@@ -132,6 +138,7 @@ int	rec_sort(t_list *l, t_tab *table)
 		n += rec_sort(l, table->tm);
 		free(table->tm);
 		free(table->tp);
+//		free(table->t3);
 	}
 	return (n);
 }

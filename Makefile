@@ -11,11 +11,14 @@ PROG =	check\
 		instruction5\
 		lib\
 		liste\
+		post_sort\
 		push_swap\
 		rec_sort\
 		split_pos\
 		sort\
+		sort_pos\
 		test\
+
 
 SRC = $(addsuffix .c, $(PROG))
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   instruction4.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:00:27 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/15 12:08:54 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:48:58 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,6 @@ int	pa(t_list *l)
 		pa_std(l);
 	l->dim_a++;
 	l->dim_b--;
-	ft_printf("pa\n");
+	reg(l, "pa", PA);
 	return (1);
 }

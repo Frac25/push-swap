@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   instruction5.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:00:27 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/15 12:08:58 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:49:08 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,6 @@ int	pb(t_list *l)
 		pb_std(l);
 	l->dim_a--;
 	l->dim_b++;
-	ft_printf("pb\n");
+	reg(l, "pb", PB);
 	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:28:29 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/16 10:29:47 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/23 17:21:38 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,8 @@ void	tester(t_list *l)
 	printf("si pas de KO, c'est OK!\n");
 }
 
+
+
 void	print_double_char(char **argv)
 {
 	int	i;
@@ -206,6 +208,28 @@ t_nod	*free_all_node(t_nod *node)
 	return (NULL);
 }
 
-
-
 */
+
+t_nod	*p_moyen(t_tab *table)
+{
+	int		i;
+	int		somme_p;
+	int		valeur_p;
+	t_nod	*location_t;
+
+	i = 0;
+	somme_p = 0;
+	location_t = table->location;
+	while (i < table->size)
+	{
+		somme_p += location_t->discret;
+		location_t = location_t->next;
+		i++;
+	}
+	valeur_p = (somme_p / i);
+	location_t = table->location;
+	while (location_t->discret != valeur_p)
+		location_t = location_t->next;
+	return (location_t);
+}
+

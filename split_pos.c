@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_pos.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:20:33 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/15 11:27:59 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/23 09:34:50 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	split_a(t_list *l, t_tab *table)
 	int	n;
 
 	n = 0;
+
 	while ((table->tp->size + table->tm->size) < table->size)
 	{
 		if (table->position == d_a)

@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:40:44 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/18 13:19:37 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:51:15 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,22 @@ typedef enum pos
 	d_b,
 }	t_pos;
 
+typedef enum ins
+{
+	SUP,
+	SA,
+	SB,
+	SS,
+	PA,
+	PB,
+	RA,
+	RB,
+	RR,
+	RRA,
+	RRB,
+	RRR,
+}	t_ins;
+
 typedef struct nod
 {
 	struct nod	*next;
@@ -43,6 +59,9 @@ typedef struct list
 	t_nod	*node_b;
 	int		dim_a;
 	int		dim_b;
+	_Bool	p;
+	t_ins	*ins;
+	int		i;
 }	t_list;
 
 typedef struct tab
@@ -51,8 +70,10 @@ typedef struct tab
 	int			size;
 	t_pos		position;
 	t_nod		*pivot;
+	t_nod		*pivot_2;
 	struct tab	*tp;
 	struct tab	*tm;
+	struct tab	*t3;
 }	t_tab;
 
 int		ft_atoi(const char *str);
@@ -74,12 +95,17 @@ void	error(void);
 
 int		sort(t_list *l, t_tab *table);
 
+int		sort_ub_r3(t_list *l);
+int		sort_db_r3(t_list *l);
+int		sort_da_r3(t_list *l);
+
 int		rec_sort(t_list *l, t_tab *table);
 void	discret(t_list *l);
 
 int		split_a(t_list *l, t_tab *table);
 int		split_b(t_list *l, t_tab *table);
 
+void	reg(t_list *l, char *c, t_ins ins);
 int		sa(t_list *l);
 int		sb(t_list *l);
 int		ss(t_list *l);
@@ -97,4 +123,29 @@ void	printa(t_list *l);
 void	print_double_char(char **argv);
 void	tester(t_list *l);
 
+t_nod	*p_moyen(t_tab *table);
+
+void	post_sort(t_ins *ins);
+int		print_instr(t_ins *ins);
+
 #endif
+
+
+/*
+
+typedef enum ins
+{
+	sup,
+	sa,
+	sb,
+	ss,
+	pa,
+	pb,
+	ra,
+	rb,
+	rr,
+	rra,
+	rrb,
+	rrr,
+}	t_ins;
+*/
