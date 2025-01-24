@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:04:12 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/23 17:25:34 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/24 07:40:47 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,29 +101,36 @@ int	sort_r3(t_list *l, t_tab *table)
 	return (n);
 }
 
+int opti_sort_3(t_list *l, t_tab *table)
+{
+	int	n;
+
+	n = 0;
+		if (table->position == u_b && table->size == 3)
+			n += sort_ub_r3(l);
+		else if (table->position == d_b && table->size == 3)
+			n += sort_db_r3(l);
+		else if (table->position == d_a && table->size == 3)
+			n += sort_da_r3(l);
+		else
+			n += to_top_a(l, table) + sort_r3(l, table);
+		//	printf("TRI : position = %u  size = %d  v = %d  n = %d\n", table->position, table->size, table->location->discret, n);
+		return (n);
+}
 
 int	rec_sort(t_list *l, t_tab *table)
 {
 	int	n;
 
 	n = 0;
-
 	if (table->size <= 3)
 	{
-
-//		if (table->position == u_b && table->size == 3)
-//			n += sort_ub_r3(l);
-//		else if (table->position == d_b && table->size == 3)
-//			n += sort_db_r3(l);
-//		else if (table->position == d_a && table->size == 3)
-//			n += sort_da_r3(l);
-//		else
-			n += to_top_a(l, table) + sort_r3(l, table);
-//		printf("TRI : position = %u  size = %d n = %d\n", table->position, table->size, n);
+//		n += opti_sort_3(l, table);
+		n += to_top_a(l, table) + sort_r3(l, table);
 	}
 	else
 	{
-//printf("SPLIT position = %u  size = %d\n", table->position, table->size);
+//		printf("SPLIT position = %u  size = %d  v = %d\n", table->position, table->size, table->location->discret);
 		table->tm = init_tab(NULL, 0);
 		table->tp = init_tab(NULL, 0);
 //		table->t3 = init_tab(NULL, 0);
