@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:40:44 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/23 16:51:15 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/24 08:18:00 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct list
 	t_nod	*node_b;
 	int		dim_a;
 	int		dim_b;
-	_Bool	p;
+	int		p;
 	t_ins	*ins;
 	int		i;
 }	t_list;
