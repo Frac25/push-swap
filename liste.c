@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:34:45 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/24 08:17:33 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/24 10:18:41 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ t_list	*init_list(t_nod *stack, int size)
 	new_list->node_b = NULL;
 	new_list->dim_a = size;
 	new_list->dim_b = 0;
-	new_list->p = 2;
+	new_list->p = 1;
 	new_list->i = 0;
 	new_list->ins = malloc(sizeof(t_ins) * 100000);
 
@@ -119,5 +119,9 @@ t_tab	*init_tab(t_nod *location, int size)
 	new_table->pivot = NULL;
 	new_table->tm = NULL;
 	new_table->tp = NULL;
+	new_table->t1 = NULL;
+	new_table->t2 = NULL;
+	new_table->t3 = NULL;
+
 	return (new_table);
 }

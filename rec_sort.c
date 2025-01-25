@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:04:12 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/24 08:47:10 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/25 12:14:47 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	to_top_a(t_list *l, t_tab *table)
 	int	i;
 	int	n;
 
+write(1, "to_top_a\n", 9);
 	i = 0;
 	n = 0;
 	if (table->position == d_a)
@@ -51,10 +52,12 @@ int	to_top_a(t_list *l, t_tab *table)
 	}
 	if (table->position == d_b)
 	{
+		printf("db size = %d\n", table->size );
 		while (i++ < table->size)
 		{
 			n += rrb(l);
 			n += pa(l);
+			printf("db i= %d\n", i);
 		}
 	}
 	if (table->position == u_b)
@@ -69,7 +72,7 @@ int	to_top_a(t_list *l, t_tab *table)
 int	sort_r3(t_list *l, t_tab *table)
 {
 	int	n;
-
+write(1, "sort_3\n", 7);
 	n = 0;
 	if (table->size >= 2 && (l->node_a->value > l->node_a->next->value))
 			n += sa(l);
@@ -106,7 +109,6 @@ void	pivot_2(t_tab *table)
 	int	i;
 	int		min;
 
-
 	i = 0;
 	location_t = table->location;
 	min = location_t->discret;
@@ -118,12 +120,11 @@ void	pivot_2(t_tab *table)
 		i++;
 	}
 
-
 	i  = table->size;
-//	printf("i = %d\n", i);
+	printf("i = %d\n", i);
 
 	location_t = table->location;
-	while (location_t->discret != min + table->size / 3)
+	while (location_t->discret != min + table->size / 3 ) //attention -1
 	{
 		location_t = location_t->next;
 //		printf("v2 = %d\n",location_t->next->discret);
@@ -131,7 +132,7 @@ void	pivot_2(t_tab *table)
 //		printf("i = %d\n", i);
 	}
 	table->pivot = location_t;
-	while (location_t->discret != min + table->size * 2 / 3)
+	while (location_t->discret != min + table->size * 2 / 3 ) //attention -1
 	{
 		location_t = location_t->next;
 //		printf("v2 = %d\n",location_t->next->discret);
@@ -149,28 +150,66 @@ int	rec_sort(t_list *l, t_tab *table)
 
 	n = 0;
 	if (table->size <= 3)
+		//n += to_top_a(l, table) + sort_r3(l, table);
+		n += opti_sort_3(l, table);
+	else
+		n += rec_sort3(l, table);
+	return (n);
+}
+
+int	rec_sort2(t_list *l, t_tab *table)
+{
+	int	n;
+
+	n = 0;
+	if (table->size <= 3)
 		n += to_top_a(l, table) + sort_r3(l, table);
 		//		n += opti_sort_3(l, table);
 	else
 	{
 //		printf("SPLIT position = %u  size = %d  v = %d\n", table->position, table->size, table->location->discret);
-		table->tm = init_tab(NULL, 0);
-		table->tp = init_tab(NULL, 0);
-		table->t3 = init_tab(NULL, 0);
-//		table->pivot = p_moyen(table);
-		pivot_2(table);
-
+		table->t1 = init_tab(NULL, 0);
+		table->t2 = init_tab(NULL, 0);
+		table->pivot = p_moyen(table);
 		if (table->position == u_a || table->position == d_a)
 			n += split_a(l, table);
 		else
 			n += split_b(l, table);
 
-		n += rec_sort(l, table->tp);
-		n += rec_sort(l, table->tm);
-		n += rec_sort(l, table->t3);
-		free(table->tm);
-		free(table->tp);
-		free(table->t3);
+		n += rec_sort(l, table->t1);
+		n += rec_sort(l, table->t2);
+		free(table->t1);
+		free(table->t2);
 	}
+	return (n);
+}
+
+int	rec_sort3(t_list *l, t_tab *table)
+{
+	int	n;
+
+	n = 0;
+//	printf("SPLIT position = %u  size = %d  v = %d\n", table->position, table->size, table->location->discret);
+	table->t1 = init_tab(NULL, 0);
+	table->t2 = init_tab(NULL, 0);
+	table->t3 = init_tab(NULL, 0);
+//	table->pivot = p_moyen(table);
+	pivot_2(table);
+	if (table->position == u_a)
+		n += split_ua(l, table);
+	else if (table->position == u_b)
+		n += split_ub(l, table);
+	else if (table->position == d_b)
+		n += split_db(l, table);
+	else if (table->position == d_a)
+		n += split_da(l, table);
+
+	n += rec_sort(l, table->t1);
+	n += rec_sort(l, table->t2);
+	n += rec_sort(l, table->t3);
+
+	free(table->t1);
+	free(table->t2);
+	free(table->t3);
 	return (n);
 }

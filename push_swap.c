@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:38:54 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/24 07:53:44 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/24 10:21:00 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,8 @@ int	main(int argc, char *argv[])
 	return (0);
 }
 
-/*
-	tester(l);
-	printf("n = %d\n", n);
-*/
+//	tester(l);
+//	printf("n = %d\n", n);
 
 /*
 	if (table == NULL)

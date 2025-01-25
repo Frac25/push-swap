@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:40:44 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/24 08:18:00 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/24 17:28:27 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ typedef struct tab
 	t_nod		*pivot_2;
 	struct tab	*tp;
 	struct tab	*tm;
+	struct tab	*t1;
+	struct tab	*t2;
 	struct tab	*t3;
 }	t_tab;
 
@@ -100,8 +102,14 @@ int		sort_db_r3(t_list *l);
 int		sort_da_r3(t_list *l);
 
 int		rec_sort(t_list *l, t_tab *table);
+int		rec_sort2(t_list *l, t_tab *table);
+int		rec_sort3(t_list *l, t_tab *table);
 void	discret(t_list *l);
 
+int		split_ua(t_list *l, t_tab *table);
+int		split_ub(t_list *l, t_tab *table);
+int		split_da(t_list *l, t_tab *table);
+int		split_db(t_list *l, t_tab *table);
 int		split_a(t_list *l, t_tab *table);
 int		split_b(t_list *l, t_tab *table);
 
