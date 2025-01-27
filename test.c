@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:28:29 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/23 17:21:38 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/25 12:38:07 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,8 +146,6 @@ void	tester(t_list *l)
 	printf("si pas de KO, c'est OK!\n");
 }
 
-
-
 void	print_double_char(char **argv)
 {
 	int	i;
@@ -165,71 +163,5 @@ void	print_double_char(char **argv)
 		i++;
 	}
 	printf("\n");
-}
-
-/*
-t_nod	*find_p(t_list *l, t_tab *table)
-{
-	if(table->position == u_a)
-		return(l->node_a);
-	if(table->position == u_b)
-		return(l->node_b);
-	if(table->position == d_a)
-		return(l->node_a->prev);
-	if(table->position == d_b)
-		return(l->node_b->prev);
-	return(NULL);
-}
-
-t_nod	*free_all_node(t_nod *node)
-{
-	t_nod	*next_node;
-	t_nod	*initial_node;
-	int	i;
-	int	n;
-
-	if (node == NULL)
-		return (NULL);
-	n = 1;
-	initial_node = node;
-	while (node->next != initial_node)
-	{
-		n++;
-		node = node->next;
-	}
-	i = 0;
-	while (i < n)
-	{
-		next_node = node->next;
-		free(node);
-		node = next_node;
-		i++;
-	}
-	return (NULL);
-}
-
-*/
-
-t_nod	*p_moyen(t_tab *table)
-{
-	int		i;
-	int		somme_p;
-	int		valeur_p;
-	t_nod	*location_t;
-
-	i = 0;
-	somme_p = 0;
-	location_t = table->location;
-	while (i < table->size)
-	{
-		somme_p += location_t->discret;
-		location_t = location_t->next;
-		i++;
-	}
-	valeur_p = (somme_p / i);
-	location_t = table->location;
-	while (location_t->discret != valeur_p)
-		location_t = location_t->next;
-	return (location_t);
 }
 

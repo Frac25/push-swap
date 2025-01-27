@@ -3,10 +3,13 @@
 int	sort_ub_r3(t_list *l)
 {
 	int	n;
-	int a = l->node_b->value;
-	int b = l->node_b->next->value;
-	int c = l->node_b->next->next->value;
+	int a;
+	int b;
+	int c;
 
+	a = l->node_b->value;
+	b = l->node_b->next->value;
+	c = l->node_b->next->next->value;
 	n = 0;
 	if      (c > b && b > a)
 		n += rb(l) + sb(l) + pa(l) + pa(l) + rrb(l) + pa(l);
@@ -26,10 +29,13 @@ int	sort_ub_r3(t_list *l)
 int	sort_db_r3(t_list *l)
 {
 	int	n;
-	int a = l->node_b->prev->prev->prev->value;
-	int b = l->node_b->prev->prev->value;
-	int c = l->node_b->prev->value;
+	int a;
+	int b;
+	int c;
 
+	a = l->node_b->prev->prev->prev->value;
+	b = l->node_b->prev->prev->value;
+	c = l->node_b->prev->value;
 	n = 0;
 	if      (c > b && b > a)
 		n += rrb(l) + pa(l) + rrb(l) + pa(l) + rrb(l) + pa(l);
@@ -49,10 +55,13 @@ int	sort_db_r3(t_list *l)
 int	sort_da_r3(t_list *l)
 {
 	int	n;
-	int a = l->node_b->prev->prev->prev->value;
-	int b = l->node_b->prev->prev->value;
-	int c = l->node_b->prev->value;
+	int a;
+	int b;
+	int c;
 
+	a = l->node_a->prev->prev->prev->value;
+	b = l->node_a->prev->prev->value;
+	c = l->node_a->prev->value;
 	n = 0;
 	if      (c > b && b > a)
 		n += rra(l) + rra(l) + rra(l);

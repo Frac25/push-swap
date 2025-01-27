@@ -18,6 +18,7 @@ PROG =	check\
 		sort\
 		sort_pos\
 		test\
+		rec_sort_2\
 
 
 SRC = $(addsuffix .c, $(PROG))

@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:40:44 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/24 17:28:27 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/25 12:47:28 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,17 +101,13 @@ int		sort_ub_r3(t_list *l);
 int		sort_db_r3(t_list *l);
 int		sort_da_r3(t_list *l);
 
-int		rec_sort(t_list *l, t_tab *table);
-int		rec_sort2(t_list *l, t_tab *table);
-int		rec_sort3(t_list *l, t_tab *table);
 void	discret(t_list *l);
+int		rec_sort3(t_list *l, t_tab *table);
 
 int		split_ua(t_list *l, t_tab *table);
 int		split_ub(t_list *l, t_tab *table);
 int		split_da(t_list *l, t_tab *table);
 int		split_db(t_list *l, t_tab *table);
-int		split_a(t_list *l, t_tab *table);
-int		split_b(t_list *l, t_tab *table);
 
 void	reg(t_list *l, char *c, t_ins ins);
 int		sa(t_list *l);
@@ -131,10 +127,17 @@ void	printa(t_list *l);
 void	print_double_char(char **argv);
 void	tester(t_list *l);
 
-t_nod	*p_moyen(t_tab *table);
-
 void	post_sort(t_ins *ins);
 int		print_instr(t_ins *ins);
+
+int		rec_sort2(t_list *l, t_tab *table);
+t_nod	*p_moyen(t_tab *table);
+int		split_a(t_list *l, t_tab *table);
+int		split_b(t_list *l, t_tab *table);
+
+
+int		sort_r3(t_list *l, t_tab *table);
+int		to_top_a(t_list *l, t_tab *table);
 
 #endif
 

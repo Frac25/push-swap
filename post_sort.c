@@ -1,7 +1,5 @@
 #include "push_swap.h"
 
-
-
 int	print_instr (t_ins *ins)
 {
 	int	i;

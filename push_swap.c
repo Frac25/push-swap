@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:38:54 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/24 10:21:00 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/26 11:44:04 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,9 @@ int	main(int argc, char *argv[])
 	stack_a = init_stack(param);
 	l = init_list(stack_a, strlen_2(param));
 	table = init_tab(l->node_a, l->dim_a);
-
 	n = sort(l, table);
-
 	tester(l);
 	printf("n = %d\n", n);
-
 	free_all_node(stack_a);
 	free(l);
 	free(table);
