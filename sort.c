@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:17:24 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/29 13:54:33 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/29 15:25:05 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,13 +112,9 @@ int	sort(t_list *l, t_tab *table)
 	if (ever_sorted(l) == 1)
 		exit(EXIT_SUCCESS);
 	discret(l);
-//	l->p = 0;
 	if (l->dim_a <= 5)
 		n = sort_1to5(l);
 	else
 		n = rec_sort3(l, table);
-//	post_sort(l);
-//	print_instr(l->ins);
-//	free(l->ins)
 	return (n);
 }

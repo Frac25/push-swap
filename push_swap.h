@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:40:44 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/29 15:02:04 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/29 15:26:28 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ int		sort_da_r3(t_list *l);
 
 void	discret(t_list *l);
 int		rec_sort3(t_list *l, t_tab *table);
+int		sort_r3(t_list *l, t_tab *table);
 
 int		split_ua(t_list *l, t_tab *table);
 int		split_ub(t_list *l, t_tab *table);
@@ -123,21 +124,5 @@ int		rr(t_list *l);
 int		rra(t_list *l);
 int		rrb(t_list *l);
 int		rrr(t_list *l);
-
-int		test_i(t_list *stack);
-void	printa(t_list *l);
-void	print_double_char(char **argv);
-void	tester(t_list *l);
-
-void	post_sort(t_list *l);
-int		print_instr(t_ins *ins);
-
-int		rec_sort2(t_list *l, t_tab *table);
-t_nod	*p_moyen(t_tab *table);
-int		split_a(t_list *l, t_tab *table);
-int		split_b(t_list *l, t_tab *table);
-
-int		sort_r3(t_list *l, t_tab *table);
-int		to_top_a(t_list *l, t_tab *table);
 
 #endif

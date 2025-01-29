@@ -6,36 +6,11 @@
 /*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:27:27 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/29 14:28:14 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/29 15:26:36 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	discret(t_list *l)
-{
-	int		j;
-	int		rank;
-	t_nod	*node_i;
-	t_nod	*node_j;
-
-	node_i = l->node_a;
-	node_j = l->node_a;
-	while (node_i->discret == 0)
-	{
-		rank = 0;
-		j = 0;
-		while (j < l->dim_a)
-		{
-			if (node_i->value >= node_j->value)
-				rank++;
-			j++;
-			node_j = node_j->next;
-		}
-		node_i->discret = rank;
-		node_i = node_i->next;
-	}
-}
 
 int	sort_ub_r3(t_list *l)
 {
@@ -112,5 +87,47 @@ int	sort_da_r3(t_list *l)
 		n += rra(l) + rra(l) + pb(l) + rra(l) + sa(l) + pa(l);
 	else if (a > b && b > c)
 		n += rra(l) + pb(l) + rra(l) + rra(l) + sa(l) + pa(l);
+	return (n);
+}
+
+void	discret(t_list *l)
+{
+	int		j;
+	int		rank;
+	t_nod	*node_i;
+	t_nod	*node_j;
+
+	node_i = l->node_a;
+	node_j = l->node_a;
+	while (node_i->discret == 0)
+	{
+		rank = 0;
+		j = 0;
+		while (j < l->dim_a)
+		{
+			if (node_i->value >= node_j->value)
+				rank++;
+			j++;
+			node_j = node_j->next;
+		}
+		node_i->discret = rank;
+		node_i = node_i->next;
+	}
+}
+
+int	sort_r3(t_list *l, t_tab *table)
+{
+	int	n;
+
+	n = 0;
+	if (table->size >= 2 && (l->node_a->value > l->node_a->next->value))
+			n += sa(l);
+	if (table->size == 3)
+	{
+		if (l->node_a->next->value > l->node_a->next->next->value)
+			n += ra(l) + sa(l) + rra(l);
+		if (l->node_a->value > l->node_a->next->value)
+			n += sa(l);
+	}
 	return (n);
 }
