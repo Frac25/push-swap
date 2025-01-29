@@ -3,24 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:36:17 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/18 13:34:49 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:09:06 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
-
-int	strlen_2(char **argv)
-{
-	int	i;
-
-	i = 0;
-	while (argv[i])
-		i++;
-	return (i);
-}
 
 void	check_char(char **str)
 {
@@ -94,42 +84,45 @@ void	check_dup(char **str)
 	}
 }
 
+char	**split_param(char **argv, int argc)
+{
+	char	**tab;
+	int		i;
+	int		j;
+
+	tab = malloc(sizeof(char *) * (argc - 1) + 1);
+	if (!tab)
+		error();
+	i = 0;
+	while (i < argc - 1)
+	{
+		tab[i] = malloc(sizeof(char) * ft_strlen_int(argv[i + 1]) + 1);
+		if (!tab)
+			error();
+		j = 0;
+		while (j < ft_strlen_int(argv[i + 1]))
+		{
+			tab[i][j] = argv[i + 1][j];
+			j++;
+		}
+		tab[i][j] = '\0';
+		i++;
+	}
+	tab[i] = NULL;
+	return (tab);
+}
+
 char	**check_param(char **argv, int argc)
 {
-	char	**tab = NULL;
-	int	i;
-	int	j;
+	char	**tab;
 
-	if (argc <=1 || (argc == 2 && argv[1][0] == '\0'))
+	tab = NULL;
+	if (argc <= 1 || (argc == 2 && argv[1][0] == '\0'))
 		error();
-
 	if (argc == 2)
-	{
-//		printf("argc = 2 \n");
 		tab = ft_split(argv[1], ' ');
-	}
-
 	else
-	{
-//		printf("argc pas = 2 \n");
-		i = 0;
-		tab = malloc(sizeof(char*) * (argc - 1) + 1);
-		while (i < argc - 1 )
-		{
-			tab[i] = malloc(sizeof(char) * ft_strlen_int(argv[i + 1]) + 1);
-			j = 0;
-			while (j < ft_strlen_int(argv[i + 1]))
-			{
-				tab[i][j] = argv[i + 1][j];
-				j++;
-			}
-			tab[i][j] = '\0';
-			i++;
-		}
-		tab[i] = NULL;
-	}
-
-//	print_double_char(tab);
+		tab = split_param(argv, argc);
 	check_char(tab);
 	check_max(tab);
 	check_dup(tab);

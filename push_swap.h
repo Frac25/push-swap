@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:40:44 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/25 12:47:28 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/29 15:02:04 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,6 @@ typedef struct tab
 	t_pos		position;
 	t_nod		*pivot;
 	t_nod		*pivot_2;
-	struct tab	*tp;
-	struct tab	*tm;
 	struct tab	*t1;
 	struct tab	*t2;
 	struct tab	*t3;
@@ -109,6 +107,10 @@ int		split_ub(t_list *l, t_tab *table);
 int		split_da(t_list *l, t_tab *table);
 int		split_db(t_list *l, t_tab *table);
 
+int		t1_pa(t_list *l, t_tab *table);
+int		t3_pb_rb(t_list *l, t_tab *table);
+int		t3_ra(t_list *l, t_tab *table);
+
 void	reg(t_list *l, char *c, t_ins ins);
 int		sa(t_list *l);
 int		sb(t_list *l);
@@ -127,7 +129,7 @@ void	printa(t_list *l);
 void	print_double_char(char **argv);
 void	tester(t_list *l);
 
-void	post_sort(t_ins *ins);
+void	post_sort(t_list *l);
 int		print_instr(t_ins *ins);
 
 int		rec_sort2(t_list *l, t_tab *table);
@@ -135,28 +137,7 @@ t_nod	*p_moyen(t_tab *table);
 int		split_a(t_list *l, t_tab *table);
 int		split_b(t_list *l, t_tab *table);
 
-
 int		sort_r3(t_list *l, t_tab *table);
 int		to_top_a(t_list *l, t_tab *table);
 
 #endif
-
-
-/*
-
-typedef enum ins
-{
-	sup,
-	sa,
-	sb,
-	ss,
-	pa,
-	pb,
-	ra,
-	rb,
-	rr,
-	rra,
-	rrb,
-	rrr,
-}	t_ins;
-*/

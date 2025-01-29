@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   instruction1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:00:01 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/24 15:19:08 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:09:41 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-void reg(t_list *l, char *c, t_ins ins)
+void	reg(t_list *l, char *c, t_ins ins)
 {
-	if(l->p == 1)
+	if (l->p == 1)
 	{
 		ft_printf("%s\n", c);
 	}
-	else if(l->p == 0)
+	else if (l->p == 0)
 		l->ins[l->i++] = ins;
 }
 

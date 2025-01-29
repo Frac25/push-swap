@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rec_sort_2.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/29 14:17:41 by sydubois          #+#    #+#             */
+/*   Updated: 2025/01/29 14:18:43 by sydubois         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 t_nod	*p_moyen(t_tab *table)
@@ -26,9 +38,8 @@ t_nod	*p_moyen(t_tab *table)
 int	split_a(t_list *l, t_tab *table)
 {
 	int	n;
-	write(1,"_a\n", 3);
-	n = 0;
 
+	n = 0;
 	while ((table->t1->size + table->t2->size) < table->size)
 	{
 		if (table->position == d_a)
@@ -56,7 +67,7 @@ int	split_a(t_list *l, t_tab *table)
 int	split_b(t_list *l, t_tab *table)
 {
 	int	n;
-	write(1,"_b\n", 3);
+
 	n = 0;
 	while ((table->t1->size + table->t2->size) < table->size)
 	{
@@ -113,6 +124,7 @@ int	to_top_a(t_list *l, t_tab *table)
 int	sort_r3(t_list *l, t_tab *table)
 {
 	int	n;
+
 	n = 0;
 	if (table->size >= 2 && (l->node_a->value > l->node_a->next->value))
 			n += sa(l);
@@ -142,7 +154,6 @@ int	rec_sort2(t_list *l, t_tab *table)
 			n += split_a(l, table);
 		else
 			n += split_b(l, table);
-
 		n += rec_sort2(l, table->t1);
 		n += rec_sort2(l, table->t2);
 		free(table->t1);

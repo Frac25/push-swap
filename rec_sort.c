@@ -3,54 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   rec_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:04:12 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/26 11:50:42 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:26:52 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-void	discret(t_list *l)
-{
-	int		j;
-	int		rank;
-	t_nod	*node_i;
-	t_nod	*node_j;
-
-	node_i = l->node_a;
-	node_j = l->node_a;
-	while (node_i->discret == 0)
-	{
-		rank = 0;
-		j = 0;
-		while (j < l->dim_a)
-		{
-			if (node_i->value >= node_j->value)
-				rank++;
-			j++;
-			node_j = node_j->next;
-		}
-		node_i->discret = rank;
-		node_i = node_i->next;
-	}
-}
-
-int opti_sort_3(t_list *l, t_tab *table)
+int	opti_sort_3(t_list *l, t_tab *table)
 {
 	int	n;
 
 	n = 0;
-		if (table->position == u_b && table->size == 3)
-			n += sort_ub_r3(l);
-		else if (table->position == d_b && table->size == 3)
-			n += sort_db_r3(l);
-		else if (table->position == d_a && table->size == 3)
-			n += sort_da_r3(l);
-		else
-			n += sort_r3(l, table); // ameliorer ?
-		return (n);
+	if (table->position == u_b && table->size == 3)
+		n += sort_ub_r3(l);
+	else if (table->position == d_b && table->size == 3)
+		n += sort_db_r3(l);
+	else if (table->position == d_a && table->size == 3)
+		n += sort_da_r3(l);
+	else
+		n += sort_r3(l, table);
+	return (n);
 }
 
 int	opti_sort_2(t_list *l, t_tab *table)
@@ -68,35 +43,30 @@ int	opti_sort_2(t_list *l, t_tab *table)
 	if (table->position == d_b)
 	{
 		while (i++ < table->size)
-		{
-			n += rrb(l);
-			n += pa(l);
-		}
+			n += rrb(l) + pa(l);
 	}
 	if (table->position == u_b)
 	{
 		while (i++ < table->size)
 			n += pa(l);
 	}
-
 	if (table->size == 2 && (l->node_a->value > l->node_a->next->value))
 			n += sa(l);
-
 	return (n);
 }
-
 
 void	pivot_2(t_tab *table)
 {
 	t_nod	*location_t;
-	int	i;
+	int		i;
 	int		min;
+
 	i = 0;
 	location_t = table->location;
 	min = location_t->discret;
 	while (i < table->size)
 	{
-		if(min > location_t->discret)
+		if (min > location_t->discret)
 			min = location_t->discret;
 		location_t = location_t->next;
 		i++;
@@ -110,9 +80,10 @@ void	pivot_2(t_tab *table)
 	table->pivot_2 = location_t;
 }
 
-int split(t_list *l, t_tab *table)
+int	split(t_list *l, t_tab *table)
 {
-	int n ;
+	int	n;
+
 	n = 0;
 	if (table->position == u_a)
 		n += split_ua(l, table);
@@ -150,4 +121,3 @@ int	rec_sort3(t_list *l, t_tab *table)
 	}
 	return (n);
 }
-

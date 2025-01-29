@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:17:24 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/26 11:58:31 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/29 13:54:33 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,8 @@ int	sort(t_list *l, t_tab *table)
 		n = sort_1to5(l);
 	else
 		n = rec_sort3(l, table);
-//	post_sort(l->ins);
+//	post_sort(l);
 //	print_instr(l->ins);
+//	free(l->ins)
 	return (n);
 }

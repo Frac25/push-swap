@@ -15,6 +15,7 @@ PROG =	check\
 		push_swap\
 		rec_sort\
 		split_pos\
+		split_pos2\
 		sort\
 		sort_pos\
 		test\

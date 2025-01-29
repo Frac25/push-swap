@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   liste.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:34:45 by sydubois          #+#    #+#             */
-/*   Updated: 2025/01/24 10:18:41 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:10:06 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_nod	*free_all_node(t_nod *node)
 	return (NULL);
 }
 
-t_nod	*init_stack(char *argv[])
+t_nod	*init_stack(char **argv)
 {
 	int		i;
 	t_nod	*node_a;
@@ -101,8 +101,7 @@ t_list	*init_list(t_nod *stack, int size)
 	new_list->dim_b = 0;
 	new_list->p = 1;
 	new_list->i = 0;
-	new_list->ins = malloc(sizeof(t_ins) * 100000);
-
+	new_list->ins = NULL;
 	return (new_list);
 }
 
@@ -117,11 +116,8 @@ t_tab	*init_tab(t_nod *location, int size)
 	new_table->location = location;
 	new_table->position = u_a;
 	new_table->pivot = NULL;
-	new_table->tm = NULL;
-	new_table->tp = NULL;
 	new_table->t1 = NULL;
 	new_table->t2 = NULL;
 	new_table->t3 = NULL;
-
 	return (new_table);
 }
